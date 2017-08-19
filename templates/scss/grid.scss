@@ -1,0 +1,51 @@
+.column{
+    padding-left: 8px;
+    padding-right: 8px;
+    float: left;
+}
+
+.row{
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.row::after{
+    content: '';
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.container{
+    max-width: 1156px;
+    margin: 0 auto;
+}
+
+$screenWidth : 0px 756px 991px 1200px;
+$screenName : xs sm md lg;
+
+@each $name in $screenName {
+    @for $i from 1 through 12 {
+        .col-#{$name}-#{$i} {
+            @extend .column;
+        }
+    }
+}
+
+
+ @for $j from 1 through length($screenName) {
+
+    @media screen and (min-width:#{nth($screenWidth, $j)}) {
+
+        @for $i from 1 through 12 {
+
+            .col-#{nth($screenName, $j)}-#{$i} { 
+                width:  $i  / 12 *100%;
+            }
+
+        }
+
+    }
+    
+}
+    
