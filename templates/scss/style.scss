@@ -1,0 +1,27 @@
+body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background-color: #edf1f5;
+}
+
+.task{
+    background: #fff;
+    padding: 20px;
+
+    &__element {
+        display: flex;
+        padding: 7px;
+    }
+    
+    &__status{
+        padding: 0px 20px;
+        &--done{
+            color: green;
+        }
+        &--undone{
+            color: red;
+        }
+    }
+}
+

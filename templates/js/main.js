@@ -2,7 +2,10 @@ window.onload = function(){
     ajax('getTask', function (data) {
 
     var div = document.getElementById('tasksList');
-    for (var key in data) {
+    var taskTemplate = document.getElementById('taskTemplate').innerText;
+    div.innerHTML = ejs.render( taskTemplate, {data: data});
+
+  /*  for (var key in data) {
         if (data.hasOwnProperty(key)) {
 
             var grupa = data[key];
@@ -14,6 +17,6 @@ window.onload = function(){
                 div.innerHTML += elem;
             }
         }
-    }
+    } */
 });
 }
