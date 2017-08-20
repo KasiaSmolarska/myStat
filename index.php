@@ -5,5 +5,5 @@ if (count($_GET) == 0 ) {
 } else {
    include 'engine/database.php';
    include 'controllers/tasks.php';
-   include 'actions/getTasks.php';
+   include 'actions/' . $_GET['action'] . '.php';
 }

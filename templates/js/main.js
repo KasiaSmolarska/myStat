@@ -1,5 +1,5 @@
 window.onload = function(){
-    ajax('getTask', function (data) {
+    ajax('getTasks', function (data) {
 
     var div = document.getElementById('tasksList');
     var taskTemplate = document.getElementById('taskTemplate').innerText;
