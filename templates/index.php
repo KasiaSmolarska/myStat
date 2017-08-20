@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700,700i" rel="stylesheet">
     <link rel="stylesheet" href="templates/css/index.css">
     <script src="templates/js/ejs.min.js"></script>
     <script src="templates/js/ajax.js"></script>
@@ -14,13 +15,13 @@
         <% for (var key in data) { %>
              <% if (data.hasOwnProperty(key)) { %>
 
-      <div class="task__Header">  <%= key %></div>
+      <div class="task__Header"  data-group="<%= key %>">  <%= key %></div>
 
 <% } %>
 <% } %>
 
     </div>
-<div class="task__container">
+<table class="task__container">
 <% for (var key in data) { %>
     <% if (data.hasOwnProperty(key)) { %>
 
@@ -28,30 +29,36 @@
 
         <% for (var i = 0; i < grupa.length; i++) { %>
 
-            <div class="task__element">
-                <div class="checkbox">
+            <tr class="task__element" data-group="<%= grupa[i].Groups %>">
+                <td>
+                <span class="checkbox">
                     <input type="checkbox" id="task<%= i %>">
                     <label for="task<%= i %>"></label>
-                </div>
-
-               <div class="task__title">
+                </span>
+                </td>
+                <td>
+               <span class="task__title">
                     <%=  grupa[i].Title %>
-               </div>
-               <div >
+               </span>
+               </td>
+               <td>
+               <span >
                  <span class="task__status  <%= grupa[i].Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
                      <%= grupa[i].Status == 1 ? "Wykonano!" : "Do wykonania"  %> 
                  </span>
-               </div>
-               <div class="task__data">
+               </span>
+               </td>
+               <td>
+               <span class="task__data">
                    <%= grupa[i].Date %>
-               </div>
-
-            </div>
+               </span>
+               </td>
+            </tr>
 
         <% } %>
     <% } %>
 <% } %>
-</div>
+</table>
 </div>
     </noscript>
 </head>
