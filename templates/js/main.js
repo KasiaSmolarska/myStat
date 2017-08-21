@@ -40,3 +40,17 @@ function createTabTask(element){
         } 
     }
 }
+
+function submitAddTask(form) {
+   var inputs = form.querySelectorAll('[name]');
+   var addtaskValues = [];
+   for (var i = 0; i < inputs.length; i++) {
+       var input = inputs[i];
+       addtaskValues.push(input.name + '=' + input.value);
+   }
+   var postData = addtaskValues.join('&');
+   
+   ajax('addTask', function ( ){
+    console.log("dziwacznie")
+   }, postData)
+}

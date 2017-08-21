@@ -1,4 +1,4 @@
- function ajax(action, callback){
+ function ajax(action, callback, postData){
         var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         
@@ -11,8 +11,9 @@
         }
 
     }
-
-    request.open('GET', 'http://localhost/majap/index.php?action='+ action, false); 
-    request.send(null);
+    
+    request.open('POST', 'http://localhost/majap/index.php?action='+ action, false); 
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(postData !== undefined ? postData : null);
 
     }

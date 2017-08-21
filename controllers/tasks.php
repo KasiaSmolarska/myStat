@@ -6,15 +6,16 @@ function getTask(){
 
 function addTask($title,$status,$group){
    
-   if ($status !== 1 || $status !== 0) {
-       return;
+   if ($status != 1 && $status != 0) {
+       return ['Status' => 'Error', 'Description' => 'Status może mieć wartość 1 lub 0, przekazano :'. $status];
    }
-   if (count($title) < 5) {
-       return;
+   if (strlen($title) < 5) {
+       return ['Status' => 'Error', 'Description' => 'Tytuł musi mieć więcej niż 4 znaki, obecnie ma: '. strlen($title)];
     }
     $allowedGroup = ['Bugs' => 1, 'Website' => 2, 'Server' => 3, 'Other' => 4];
    if (!isset($allowedGroup[$group])) {
-       return;
+       return ['Status' => 'Error', 'Description' => 'Wybrano grupę spoza zakresu '];
     }
      dbQuery("INSERT INTO `task_list` (`ID`, `Title`, `Description`, `Date`, `Status`, `Groups`) VALUES (NULL, '$title', '', NOW(), '$status', '$group');");
+     return ['Status' => 'OK', 'Description' => 'Wszystko OK'];
 }

@@ -66,6 +66,19 @@
 
     <h1>hello majap!</h1>
     <div id="tasksList"></div>
-    
+    <form onsubmit="submitAddTask(this); return false;">
+        <label>Tytuł zadania: <input type="text" name="title"></label>
+        <label>Status zadania: <input type="text" name="status"></label>
+        <label>Wybierz grupę: 
+            <select name="group">
+                <option value="Bugs">Bugs</option>
+                <option value="Website">Website</option>
+                <option value="Server">Server</option>
+                <option value="Other">Other</option>
+            </select>
+        <input type="submit" value="Dodaj zadanie!">
+        </label>
+
+    </form>
 </body>
 </html>
