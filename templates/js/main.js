@@ -1,4 +1,4 @@
-window.onload = function(){
+function reloadTasks(){
     ajax('getTasks', function (data) {
 
     var div = document.getElementById('tasksList');
@@ -7,6 +7,7 @@ window.onload = function(){
     createTabTask(div);
 });
 }
+window.onload = reloadTasks;
 
 function createTabTask(element){
     var tabsButton = element.querySelectorAll('.task__Header');
@@ -50,7 +51,18 @@ function submitAddTask(form) {
    }
    var postData = addtaskValues.join('&');
    
-   ajax('addTask', function ( ){
-    console.log("dziwacznie")
+   ajax('addTask', function (){
+    console.log("dziwacznie");
+    reloadTasks();
    }, postData)
+}
+
+function removeTask(id) {
+    var result = confirm("Czy napewno chcesz usunąć to zadanie o id:" + id);
+    if(result){
+        ajax('removeTask', function(){
+            alert("Twoje zadanie zostało usunięte!");
+            reloadTasks();
+        }, "id=" + id)
+    }
 }

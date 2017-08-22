@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="templates/css/index.css">
     <script src="templates/js/ejs.min.js"></script>
     <script src="templates/js/ajax.js"></script>
@@ -52,6 +53,9 @@
                <span class="task__data">
                    <%= grupa[i].Date %>
                </span>
+               </td>
+               <td>
+                <i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i>
                </td>
             </tr>
 
