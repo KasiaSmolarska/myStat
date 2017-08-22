@@ -19,3 +19,7 @@ function addTask($title,$status,$group){
      dbQuery("INSERT INTO `task_list` (`ID`, `Title`, `Description`, `Date`, `Status`, `Groups`) VALUES (NULL, '$title', '', NOW(), '$status', '$group');");
      return ['Status' => 'OK', 'Description' => 'Wszystko OK'];
 }
+
+function removeTask($id){
+    return dbQuery("DELETE FROM task_list WHERE id = $id");
+}
