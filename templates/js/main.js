@@ -7,7 +7,13 @@ function reloadTasks(){
     createTabTask(div);
 });
 }
-window.onload = reloadTasks;
+window.onload = function(){
+    reloadTasks();
+    openModal('ftgtgtgttg', function(data){
+        console.log(data);
+
+    });
+} 
 
 function createTabTask(element){
     var tabsButton = element.querySelectorAll('.task__Header');
@@ -65,4 +71,18 @@ function removeTask(id) {
             reloadTasks();
         }, "id=" + id)
     }
+}
+
+function openModal(templateID, callback){
+    var modalTemplate = document.getElementById('modalTemplate').innerText;
+    var elem = document.createElement('div');
+    elem.innerHTML = ejs.render( modalTemplate, {});
+    var modal = elem.querySelector('.modal');
+    document.body.appendChild(modal);
+
+    modal.querySelector('.modal__exit').addEventListener('click', function(){
+        modal.remove();
+        callback('cancel');
+    })
+
 }

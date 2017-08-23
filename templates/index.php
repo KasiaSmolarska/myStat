@@ -11,59 +11,75 @@
     <script src="templates/js/main.js"></script>
 
     <noscript id="taskTemplate">
-<div class="task">
-    <div class="task__headers">
+        <div class="task">
+            <div class="task__headers">
+                <% for (var key in data) { %>
+                    <% if (data.hasOwnProperty(key)) { %>
+                        <div class="task__Header"  data-group="<%= key %>">  <%= key %></div>
+                    <% } %>
+                <% } %>
+
+            </div>
+        <table class="task__container">
         <% for (var key in data) { %>
-             <% if (data.hasOwnProperty(key)) { %>
+            <% if (data.hasOwnProperty(key)) { %>
 
-      <div class="task__Header"  data-group="<%= key %>">  <%= key %></div>
+                <% var grupa = data[key]; %>
 
-<% } %>
-<% } %>
+                <% for (var i = 0; i < grupa.length; i++) { %>
 
-    </div>
-<table class="task__container">
-<% for (var key in data) { %>
-    <% if (data.hasOwnProperty(key)) { %>
+                    <tr class="task__element" data-group="<%= grupa[i].Groups %>">
+                        <td>
+                        <span class="checkbox">
+                            <input type="checkbox" id="task<%= i %>">
+                            <label for="task<%= i %>"></label>
+                        </span>
+                        </td>
+                        <td>
+                    <span class="task__title">
+                            <%=  grupa[i].Title %>
+                    </span>
+                    </td>
+                    <td>
+                    <span >
+                        <span class="task__status  <%= grupa[i].Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
+                            <%= grupa[i].Status == 1 ? "Wykonano!" : "Do wykonania"  %> 
+                        </span>
+                    </span>
+                    </td>
+                    <td>
+                    <span class="task__data">
+                        <%= grupa[i].Date %>
+                    </span>
+                    </td>
+                    <td>
+                        <a href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i></a>
+                    </td>
+                    </tr>
 
-        <% var grupa = data[key]; %>
-
-        <% for (var i = 0; i < grupa.length; i++) { %>
-
-            <tr class="task__element" data-group="<%= grupa[i].Groups %>">
-                <td>
-                <span class="checkbox">
-                    <input type="checkbox" id="task<%= i %>">
-                    <label for="task<%= i %>"></label>
-                </span>
-                </td>
-                <td>
-               <span class="task__title">
-                    <%=  grupa[i].Title %>
-               </span>
-               </td>
-               <td>
-               <span >
-                 <span class="task__status  <%= grupa[i].Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
-                     <%= grupa[i].Status == 1 ? "Wykonano!" : "Do wykonania"  %> 
-                 </span>
-               </span>
-               </td>
-               <td>
-               <span class="task__data">
-                   <%= grupa[i].Date %>
-               </span>
-               </td>
-               <td>
-                <i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i>
-               </td>
-            </tr>
-
+                <% } %>
+            <% } %>
         <% } %>
-    <% } %>
-<% } %>
-</table>
-</div>
+        </table>
+        </div>
+    </noscript>
+
+    <noscript id="modalTemplate">
+        <div class="modal">
+            <div class="modal__window">
+                <div class="modal__header">
+                    <div class="modal__title">
+                        brawo my:)
+                    </div>
+                    <div class="modal__exit">
+                        x
+                    </div>
+                </div>
+                <div class="modal__content">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, accusamus.
+                </div>
+            </div>
+        </div>
     </noscript>
 </head>
 <body>
