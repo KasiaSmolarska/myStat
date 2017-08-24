@@ -69,18 +69,26 @@
             <div class="modal__window">
                 <div class="modal__header">
                     <div class="modal__title">
-                        brawo my:)
+                        <%= title %>
                     </div>
-                    <div class="modal__exit">
+                    <div data-callback="cancel" class="modal__exit">
                         x
                     </div>
                 </div>
                 <div class="modal__content">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, accusamus.
+                   <%- content %>
                 </div>
             </div>
         </div>
     </noscript>
+
+    <noscript id="modalConfirm">
+        <div class="confirm">
+            <button data-callback="ok" type="button">Ok</button> <button data-callback="cancel" type="button">Anuluj</button>
+        </div>
+    </noscript>
+
+
 </head>
 <body>
 

@@ -9,10 +9,10 @@ function reloadTasks(){
 }
 window.onload = function(){
     reloadTasks();
-    openModal('ftgtgtgttg', function(data){
+    openModal('modalConfirm', function(data){
         console.log(data);
 
-    });
+    },"Czy na pewno chcesz usunąć to zadanie?");
 } 
 
 function createTabTask(element){
@@ -73,16 +73,27 @@ function removeTask(id) {
     }
 }
 
-function openModal(templateID, callback){
+function openModal(templateID, callback, title){
     var modalTemplate = document.getElementById('modalTemplate').innerText;
+    var contentTemplate = document.getElementById(templateID).innerText;
+    var content = ejs.render(contentTemplate,{});
     var elem = document.createElement('div');
-    elem.innerHTML = ejs.render( modalTemplate, {});
+    elem.innerHTML = ejs.render( modalTemplate, {
+        title: title,
+        content : content
+    });
     var modal = elem.querySelector('.modal');
     document.body.appendChild(modal);
 
-    modal.querySelector('.modal__exit').addEventListener('click', function(){
-        modal.remove();
-        callback('cancel');
-    })
+    var dataCallback = modal.querySelectorAll('[data-callback]');
 
+        for (var i = 0; i < dataCallback.length; i++) {
+            var button = dataCallback[i];
+            
+            button.addEventListener('click', function(){
+                modal.remove();
+                callback(this.dataset.callback);
+            });
+            
+        }
 }
