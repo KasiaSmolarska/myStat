@@ -84,7 +84,13 @@
 
     <noscript id="modalConfirm">
         <div class="confirm">
-            <button data-callback="ok" type="button">Ok</button> <button data-callback="cancel" type="button">Anuluj</button>
+            <button data-callback="ok" type="button">OK</button> <button data-callback="cancel" type="button">Anuluj</button>
+        </div>
+    </noscript>
+
+    <noscript id="modalAlert">
+        <div class="alert">
+            <button data-callback="ok">OK</button>
         </div>
     </noscript>
 

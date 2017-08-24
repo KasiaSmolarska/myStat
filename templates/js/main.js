@@ -9,10 +9,6 @@ function reloadTasks(){
 }
 window.onload = function(){
     reloadTasks();
-    openModal('modalConfirm', function(data){
-        console.log(data);
-
-    },"Czy na pewno chcesz usunąć to zadanie?");
 } 
 
 function createTabTask(element){
@@ -64,13 +60,17 @@ function submitAddTask(form) {
 }
 
 function removeTask(id) {
-    var result = confirm("Czy napewno chcesz usunąć to zadanie o id:" + id);
-    if(result){
-        ajax('removeTask', function(){
-            alert("Twoje zadanie zostało usunięte!");
-            reloadTasks();
-        }, "id=" + id)
-    }
+    openModal('modalConfirm', function(data){
+
+        if(data == 'ok'){
+            ajax('removeTask', function(){
+                openModal('modalAlert','', "Zadanie zostało usunięte!");
+                reloadTasks();
+            }, "id=" + id)
+        }
+
+        console.log(data);
+    },"Czy na pewno chcesz usunąć to zadanie?");    
 }
 
 function openModal(templateID, callback, title){
@@ -92,7 +92,12 @@ function openModal(templateID, callback, title){
             
             button.addEventListener('click', function(){
                 modal.remove();
-                callback(this.dataset.callback);
+                var status = this.dataset.callback;
+                    
+                if (typeof callback === "function") {
+                     callback(status);
+                }
+               
             });
             
         }
