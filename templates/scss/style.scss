@@ -1,3 +1,6 @@
+$primaryColor:#4285f4;
+$primaryShadow: 0px 1px 3px.95px rgba(0, 0, 0, 0.3);
+
 body{
     height: 100%;
     width: 100%;
@@ -9,6 +12,7 @@ body{
 .task{
     background: #fff;
     padding: 20px;
+    box-shadow:$primaryShadow;
 
     &__container{
         width: 100%;
@@ -26,7 +30,7 @@ body{
     }
 
     &__headers{
-        background-color: darkblue;
+        background-color: $primaryColor;
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -34,12 +38,21 @@ body{
     
     &__status{
         padding: 0px 20px;
+
         &--done{
             color: green;
         }
         &--undone{
             color: red;
         }
+    }
+
+    &__delete{
+
+        & a{
+            color: dimgrey;
+        }
+
     }
 }
 
@@ -58,24 +71,51 @@ body{
         background: #fff;
         max-width: 756px;
         min-width: 40%;
-        box-shadow: 0px 0px 4px .65px rgba(0,0,0,.3);
+        box-shadow: $primaryShadow;
     }
 
     &__header{
-        background: darkblue;
-        color: #fff;
-        padding: 10px 20px;
+        //background: $primaryColor;
+        color: #383838;
+        padding: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 18px;
+        font-size: 19px;
     }
 
     &__content{
         padding: 20px;
+        min-height: 70px;
+        display: flex;
+        align-items: flex-end;
     }
 
     &__exit{
         cursor: pointer;
+    }
+}
+
+
+.button{
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 3px;
+    border: 0;
+    margin: 0 3px;
+    cursor:pointer;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    
+    box-shadow: $primaryShadow;
+
+    &--succes{
+        background: $primaryColor;
+    }
+
+    &--failure{
+        background: white;
+        color: #4d4d4d;
     }
 }

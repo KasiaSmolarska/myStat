@@ -52,7 +52,7 @@
                         <%= grupa[i].Date %>
                     </span>
                     </td>
-                    <td>
+                    <td class="task__delete">
                         <a href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i></a>
                     </td>
                     </tr>
@@ -84,13 +84,13 @@
 
     <noscript id="modalConfirm">
         <div class="confirm">
-            <button data-callback="ok" type="button">OK</button> <button data-callback="cancel" type="button">Anuluj</button>
+            <button class="button button--succes" data-callback="ok" type="button">OK</button> <button class="button button--failure" data-callback="cancel" type="button">Anuluj</button>
         </div>
     </noscript>
 
     <noscript id="modalAlert">
         <div class="alert">
-            <button data-callback="ok">OK</button>
+            <button class="button button--succes" data-callback="ok">OK</button>
         </div>
     </noscript>
 
@@ -100,7 +100,7 @@
 
     <h1>hello majap!</h1>
     <div id="tasksList"></div>
-    <form onsubmit="submitAddTask(this); return false;">
+    <form class="task task__new" onsubmit="submitAddTask(this); return false;">
         <label>Tytuł zadania: <input type="text" name="title"></label>
         <label>Status zadania: <input type="text" name="status"></label>
         <label>Wybierz grupę: 
