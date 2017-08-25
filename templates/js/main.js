@@ -102,3 +102,9 @@ function openModal(templateID, callback, title){
             
         }
 }
+
+function showNewTask(){
+  
+   openModal('addNewTask', function () {     
+   },'Dodaj nowe zadanie!');
+}
