@@ -56,7 +56,7 @@
                         <a href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i></a>
                     </td>
                     <td class="tesk__edit">
-                        <a href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>);"class="mdi mdi-pencil"></i></a>
+                        <a href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>', <%= grupa[i].Status %>, '<%= grupa[i].Groups %>');" class="mdi mdi-pencil"></i></a>
                     </td>
                     </tr>
 
@@ -117,13 +117,33 @@
     </form>
     </noscript>
 
+    <noscript id="editTaskTemplate">
+
+       <form class=" task__edit" onsubmit="return false;">
+        <div class="row">
+        <label class="col-xs-12">Tytuł zadania: <input type="text" name="title" value="<%= title %>"></label>
+        <label class="col-xs-12">Status zadania: <input type="text" name="status" value="<%= status %>"></label>
+        <label class="col-xs-12">Wybierz grupę: 
+            <select name="groups" value="<%= groups %>">
+                <option value="Bugs">Bugs</option>
+                <option value="Website">Website</option>
+                <option value="Server">Server</option>
+                <option value="Other">Other</option>
+            </select>
+        <button class="button button--succes" data-callback="ok" type="button">OK</button> <button class="button button--failure" data-callback="cancel" type="button">Anuluj</button>
+        </label>
+        </div>
+    </form>
+    </noscript>
+
 
 </head>
 <body>
     <h1>hello majap!</h1>
-    <div id="tasksList"></div>
+    <div id="tasksList"> </div>
+    
     <button id="newTaskAction" onclick="showNewTask();" class="button button--succes" data-callback="ok" type="button">Dodaj nowe zadanie!</button>
-
+   
     
 </body>
 </html>

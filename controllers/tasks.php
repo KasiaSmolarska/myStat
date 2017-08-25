@@ -23,3 +23,7 @@ function addTask($title,$status,$group){
 function removeTask($id){
     return dbQuery("DELETE FROM task_list WHERE id = $id");
 }
+
+function editTask($id, $title, $status, $groups){
+    return dbQuery("UPDATE task_list SET Title='$title', Status='$status', Groups='$groups' WHERE id=$id");
+}

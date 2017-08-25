@@ -45,18 +45,22 @@ function createTabTask(element){
 }
 
 function submitAddTask(form) {
+   var postData = convertFormToPostData(form);
+   
+   ajax('addTask', function (){
+    console.log("dziwacznie");
+    reloadTasks();
+   }, postData)
+}
+
+function convertFormToPostData(form){
    var inputs = form.querySelectorAll('[name]');
    var addtaskValues = [];
    for (var i = 0; i < inputs.length; i++) {
        var input = inputs[i];
        addtaskValues.push(input.name + '=' + input.value);
    }
-   var postData = addtaskValues.join('&');
-   
-   ajax('addTask', function (){
-    console.log("dziwacznie");
-    reloadTasks();
-   }, postData)
+   return addtaskValues.join('&');
 }
 
 function removeTask(id) {
@@ -84,20 +88,23 @@ function openModal(templateID, callback, title){
     });
     var modal = elem.querySelector('.modal');
     document.body.appendChild(modal);
+    modalOperationsOnClick(modal, callback);
+}
 
+function modalOperationsOnClick(modal, callback){
     var dataCallback = modal.querySelectorAll('[data-callback]');
 
         for (var i = 0; i < dataCallback.length; i++) {
             var button = dataCallback[i];
             
             button.addEventListener('click', function(){
-                modal.remove();
+              
                 var status = this.dataset.callback;
                     
                 if (typeof callback === "function") {
                      callback(status);
                 }
-               
+                 modal.remove();
             });
             
         }
@@ -107,4 +114,33 @@ function showNewTask(){
   
    openModal('addNewTask', function () {     
    },'Dodaj nowe zadanie!');
+}
+
+function editTask(id, title, status, groups){
+
+    var modalTemplate = document.getElementById('modalTemplate').innerText;
+    var contentTemplate = document.getElementById('editTaskTemplate').innerText;
+    var content = ejs.render(contentTemplate,{
+        id:id,
+        title: title,
+        status:status,
+        groups:groups
+    });
+    var elem = document.createElement('div');
+    elem.innerHTML = ejs.render( modalTemplate, {
+      title : "Czy na pewno chcesz zmienić zadanie?" ,
+      content: content 
+    });
+    var modal = elem.querySelector('.modal');
+    document.body.appendChild(modal);
+
+     modalOperationsOnClick(modal, function(){
+         var postData = convertFormToPostData(modal);
+         ajax('editTask', function(){
+                
+                openModal('modalAlert','', "Zadanie zostało zmienione!");
+                reloadTasks();
+            }, postData + "&id=" + id)
+     });
+    
 }
