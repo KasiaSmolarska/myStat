@@ -102,7 +102,7 @@ function modalOperationsOnClick(modal, callback){
                 var status = this.dataset.callback;
                     
                 if (typeof callback === "function") {
-                     callback(status);
+                     callback(status, modal);
                 }
                  modal.remove();
             });
@@ -112,7 +112,8 @@ function modalOperationsOnClick(modal, callback){
 
 function showNewTask(){
   
-   openModal('addNewTask', function () {     
+   openModal('addNewTask', function (status, modal) {  
+       submitAddTask(modal);
    },'Dodaj nowe zadanie!');
 }
 

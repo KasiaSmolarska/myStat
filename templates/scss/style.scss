@@ -1,4 +1,4 @@
-$primaryColor:green;
+$primaryColor:#0296dc;
 $primaryShadow: 0px 1px 3px.95px rgba(0, 0, 0, 0.3);
 $tabsActiveColor: #f4f4f4;
 
@@ -80,6 +80,12 @@ body{
     }
     &__newContainer{
         text-align: center;
+    }
+
+    &__edit{
+        & a{
+            color: $primaryColor;
+        }
     }
 }
 

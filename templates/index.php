@@ -100,7 +100,7 @@
     <noscript id="addNewTask">
         
     
-    <form class=" task__new form" onsubmit="submitAddTask(this); return false;">
+    <div class="task__new form">
         
         <div class="form__row">
             <label class="form__label">Tytuł zadania: </label>
@@ -119,8 +119,8 @@
                     <option value="Other">Other</option>
             </select>
         </div>
-        <input class="button button--succes" type="submit" value="Dodaj zadanie!">
-    </form>
+        <input id="submitDataCallback" class="button button--succes" type="button" value="Dodaj zadanie!" data-callback="ok">
+    </div>
     </noscript>
 
     <noscript id="editTaskTemplate">
