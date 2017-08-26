@@ -100,39 +100,51 @@
     <noscript id="addNewTask">
         
     
-    <form class=" task__new" onsubmit="submitAddTask(this); return false;">
-        <div class="row">
-        <label class="col-xs-12">Tytuł zadania: <input type="text" name="title"></label>
-        <label class="col-xs-12">Status zadania: <input type="text" name="status"></label>
-        <label class="col-xs-12">Wybierz grupę: 
-            <select name="group">
-                <option value="Bugs">Bugs</option>
-                <option value="Website">Website</option>
-                <option value="Server">Server</option>
-                <option value="Other">Other</option>
-            </select>
-        <input type="submit" value="Dodaj zadanie!">
-        </label>
+    <form class=" task__new form" onsubmit="submitAddTask(this); return false;">
+        
+        <div class="form__row">
+            <label class="form__label">Tytuł zadania: </label>
+            <input class="form__input" type="text" name="title">
         </div>
+        <div class="form__row">
+            <label class="form__label">Status zadania: </label>
+            <input class="form__input" type="text" name="status">
+        </div>
+        <div class="form__row">
+            <label class="form__label">Wybierz grupę: </label>
+            <select class="form__input" name="group">
+                    <option value="Bugs">Bugs</option>
+                    <option value="Website">Website</option>
+                    <option value="Server">Server</option>
+                    <option value="Other">Other</option>
+            </select>
+        </div>
+        <input class="button button--succes" type="submit" value="Dodaj zadanie!">
     </form>
     </noscript>
 
     <noscript id="editTaskTemplate">
 
-       <form class=" task__edit" onsubmit="return false;">
-        <div class="row">
-        <label class="col-xs-12">Tytuł zadania: <input type="text" name="title" value="<%= title %>"></label>
-        <label class="col-xs-12">Status zadania: <input type="text" name="status" value="<%= status %>"></label>
-        <label class="col-xs-12">Wybierz grupę: 
-            <select name="groups" value="<%= groups %>">
-                <option <%= groups === "Bugs" ? "selected" : '' %> value="Bugs">Bugs</option>
-                <option  <%= groups === "Website" ? "selected" : '' %> value="Website">Website</option>
-                <option  <%= groups === "Server" ? "selected" : '' %> value="Server">Server</option>
-                <option  <%= groups === "Other" ? "selected" : '' %> value="Other">Other</option>
-            </select>
+       <form class=" task__edit form" onsubmit="return false;">
+            <div class="form__row">
+                <label class="form__label">Tytuł zadania: </label>
+                <input class="form__input" type="text" name="title" value="<%= title %>">
+            </div>
+            <div class="form__row">
+                <label class="form__label">Status zadania: </label>
+                <input class="form__input" type="text" name="status" value="<%= status %>">
+            </div>
+            <div class="form__row">
+                <label class="form__label">Wybierz grupę: </label>
+                <select class="form__input" name="groups" value="<%= groups %>">
+                    <option <%= groups === "Bugs" ? "selected" : '' %> value="Bugs">Bugs</option>
+                    <option  <%= groups === "Website" ? "selected" : '' %> value="Website">Website</option>
+                    <option  <%= groups === "Server" ? "selected" : '' %> value="Server">Server</option>
+                    <option  <%= groups === "Other" ? "selected" : '' %> value="Other">Other</option>
+                </select>
+            </div>       
         <button class="button button--succes" data-callback="ok" type="button">OK</button> <button class="button button--failure" data-callback="cancel" type="button">Anuluj</button>
-        </label>
-        </div>
+        
     </form>
     </noscript>
 

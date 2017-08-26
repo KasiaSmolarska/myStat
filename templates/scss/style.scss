@@ -1,6 +1,6 @@
-$primaryColor:#4285f4;
+$primaryColor:green;
 $primaryShadow: 0px 1px 3px.95px rgba(0, 0, 0, 0.3);
-$tabsActiveColor: #f8f8f8;
+$tabsActiveColor: #f4f4f4;
 
 body{
     height: 100%;
@@ -8,6 +8,10 @@ body{
     margin: 0;
     background-color: #edf1f5;
     font-family: 'Muli', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
 }
 
 .task{
@@ -98,8 +102,8 @@ body{
     }
 
     &__header{
-        //background: $primaryColor;
-        color: #383838;
+        background: $primaryColor;
+        color: #fff;
         padding: 20px;
         display: flex;
         justify-content: space-between;
@@ -112,6 +116,7 @@ body{
         min-height: 70px;
         display: flex;
         align-items: flex-end;
+        background: #fafafa;
     }
 
     &__exit{
@@ -140,6 +145,23 @@ body{
     &--failure{
         background: white;
         color: #4d4d4d;
+    }
+}
+
+.form{
+    width: 100%;
+
+    &__row{
+        width:100%;
+        padding: 5px 0;
+    }
+
+    &__input{
+        width: 100%;
+        height: 30px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        padding: 2px 10px;
     }
 }
 
