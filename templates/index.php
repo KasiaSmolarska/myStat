@@ -52,11 +52,11 @@
                         <%= grupa[i].Date %>
                     </span>
                     </td>
-                    <td class="task__delete">
-                        <a href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i></a>
-                    </td>
                     <td class="tesk__edit">
-                        <a href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>', <%= grupa[i].Status %>, '<%= grupa[i].Groups %>');" class="mdi mdi-pencil"></i></a>
+                        <a title="Edytuj zadanie" href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>', <%= grupa[i].Status %>, '<%= grupa[i].Groups %>');" class="mdi mdi-pencil"></i></a>
+                    </td>
+                    <td class="task__delete">
+                        <a title="Usuń zadanie" href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i></a>
                     </td>
                     </tr>
 
@@ -139,10 +139,15 @@
 
 </head>
 <body>
-    <h1>hello majap!</h1>
+    <header>
+     <h1>hello majap!</h1>
+    </header>
+   
     <div id="tasksList"> </div>
     
-    <button id="newTaskAction" onclick="showNewTask();" class="button button--succes" data-callback="ok" type="button">Dodaj nowe zadanie!</button>
+    <div class="task__newContainer">
+            <button id="newTaskAction" onclick="showNewTask();" class="button button--succes" data-callback="ok" type="button">Dodaj nowe zadanie!</button>
+    </div>
    
     
 </body>
