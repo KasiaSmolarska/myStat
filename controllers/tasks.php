@@ -1,13 +1,13 @@
 <?php
 
 function getTask(){
-    return dbQuery("SELECT * FROM task_list");
+    return dbQuery("SELECT * FROM task_list ORDER BY Date ASC");
 }
 
 function addTask($title,$status,$group){
    
-   if ($status != 1 && $status != 0) {
-       return ['Status' => 'Error', 'Description' => 'Status może mieć wartość 1 lub 0, przekazano :'. $status];
+   if ($status > 3 && $status < 0) {
+       return ['Status' => 'Error', 'Description' => 'Status może mieć wartość z zakresu 0-3, przekazano :'. $status];
    }
    if (strlen($title) < 5) {
        return ['Status' => 'Error', 'Description' => 'Tytuł musi mieć więcej niż 4 znaki, obecnie ma: '. strlen($title)];

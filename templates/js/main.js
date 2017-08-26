@@ -53,17 +53,29 @@ function submitAddTask(form) {
    }, postData)
 }
 
+/**
+ * Funkcja tworzy zbiór wartości gotowy do wysłania przez Ajax
+ * przykładowa zwaracana wartość: nazwa=abc&status=1
+ * @param {element} form - można też przekazać diva
+ * @return {string} np. : nazwa=abc&status=1 
+ */
 function convertFormToPostData(form){
    var inputs = form.querySelectorAll('[name]');
    var addtaskValues = [];
    for (var i = 0; i < inputs.length; i++) {
        var input = inputs[i];
-       addtaskValues.push(input.name + '=' + input.value);
+       if (input.type == 'radio' && input.checked) {
+           addtaskValues.push(input.name + '=' + input.value);
+       }
+       else if (input.type !== 'radio') {
+            addtaskValues.push(input.name + '=' + input.value);
+       }
+      
    }
    return addtaskValues.join('&');
 }
 
-function removeTask(id) {
+function removeTask(id, title) {
     openModal('modalConfirm', function(data){
 
         if(data == 'ok'){
@@ -74,7 +86,7 @@ function removeTask(id) {
         }
 
         console.log(data);
-    },"Czy na pewno chcesz usunąć to zadanie?");    
+    },"Czy na pewno chcesz usunąć to zadanie o nazwie: <br/> " + title + "?");    
 }
 
 function openModal(templateID, callback, title){

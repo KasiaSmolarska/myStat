@@ -17,7 +17,7 @@ body{
 .task{
     background: #fff;
     box-shadow:$primaryShadow;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 
     &__container{
         width: 100%;
@@ -62,6 +62,9 @@ body{
     
     &__status{
         padding: 0px 20px;
+        font-size: 20px;
+        line-height: 15px;
+        position: relative;
 
         &--done{
             color: green;
@@ -73,17 +76,22 @@ body{
 
     &__delete{
 
-        & a{
+        a{
             color: dimgrey;
         }
 
     }
     &__newContainer{
         text-align: center;
+        position: fixed;
+        bottom: 0vh;
+        display: block;
+        width: 100%;
+        margin: 0 auto;
     }
 
     &__edit{
-        & a{
+        a{
             color: $primaryColor;
         }
     }
@@ -141,6 +149,7 @@ body{
     color: #fff;
     font-size: 14px;
     font-weight: 500;
+    letter-spacing: .3px;
     
     box-shadow: $primaryShadow;
 
@@ -152,6 +161,10 @@ body{
         background: white;
         color: #4d4d4d;
     }
+    &--newTask{
+        font-size: 18px;
+        padding: 20px 30px;
+    }
 }
 
 .form{
@@ -160,6 +173,33 @@ body{
     &__row{
         width:100%;
         padding: 5px 0;
+
+        &--radio{
+            
+            i{
+                font-size: 25px;
+                cursor: pointer;
+                width: 35px;
+                height: 35px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border: 1px solid #ccc;
+                transition: all .3s;
+            }
+
+            input[type="radio"] {
+                display: none;
+
+                &:checked + label > i {
+                    box-shadow: 0px 0px 6px 0.6px rgba(189, 189, 189, 0.4)
+                }
+
+                &:not(:checked) + label > i {
+                    color:#ccc!important;
+                }
+            }
+        }
     }
 
     &__input{

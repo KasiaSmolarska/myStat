@@ -1,3 +1,8 @@
+ /**
+  * @param {string} action
+  * @param {function} callback
+  * @param postData 
+  */
  function ajax(action, callback, postData){
         var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
@@ -10,8 +15,8 @@
            callback(arr);
         }
 
-    }
-    
+    };
+
     request.open('POST', 'http://localhost/majap/index.php?action='+ action, false); 
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(postData !== undefined ? postData : null);

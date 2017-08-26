@@ -43,7 +43,9 @@
                     <td>
                     <span >
                         <span class="task__status  <%= grupa[i].Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
-                            <%= grupa[i].Status == 1 ? "Wykonano!" : "Do wykonania"  %> 
+                        <% var colors = ['red', 'green', 'yellow', 'brown']; %>
+                        <% var icons = ['emoticon-sad', 'emoticon-cool', 'emoticon-neutral', 'emoticon-poop' ];%>
+                         <i style="color:<%= colors[grupa[i].Status]%>" class="mdi mdi-<%= icons[grupa[i].Status] %> "></i>
                         </span>
                     </span>
                     </td>
@@ -52,11 +54,11 @@
                         <%= grupa[i].Date %>
                     </span>
                     </td>
-                    <td class="tesk__edit">
+                    <td class="task__edit">
                         <a title="Edytuj zadanie" href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>', <%= grupa[i].Status %>, '<%= grupa[i].Groups %>');" class="mdi mdi-pencil"></i></a>
                     </td>
                     <td class="task__delete">
-                        <a title="Usuń zadanie" href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>);" class="mdi mdi-delete"></i></a>
+                        <a title="Usuń zadanie" href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>');" class="mdi mdi-delete"></i></a>
                     </td>
                     </tr>
 
@@ -72,7 +74,7 @@
             <div class="modal__window">
                 <div class="modal__header">
                     <div class="modal__title">
-                        <%= title %>
+                        <%- title %>
                     </div>
                     <div data-callback="cancel" class="modal__exit">
                         x
@@ -106,9 +108,13 @@
             <label class="form__label">Tytuł zadania: </label>
             <input class="form__input" type="text" name="title">
         </div>
-        <div class="form__row">
+        <div class="form__row form__row--radio">
             <label class="form__label">Status zadania: </label>
-            <input class="form__input" type="text" name="status">
+            <input type="radio" name="status" value="0" id="emoticon-sad"> <label for="emoticon-sad"><i style="color:red;" class="mdi mdi-emoticon-sad"></i></label>
+            <input type="radio" name="status" value="1" id="emoticon-cool"> <label for="emoticon-cool"><i style="color:green;" class="mdi mdi-emoticon-cool"></i></label>
+            <input type="radio" name="status" value="2" id="emoticon-neutral"> <label for="emoticon-neutral"><i style="color:yellow;" class="mdi mdi-emoticon-neutral"></i></label>
+            <input type="radio" name="status" value="3" id="emoticon-poop"><label for="emoticon-poop"><i style="color:brown;" class="mdi mdi-emoticon-poop"></i></label>
+            
         </div>
         <div class="form__row">
             <label class="form__label">Wybierz grupę: </label>
@@ -158,7 +164,7 @@
     <div id="tasksList"> </div>
     
     <div class="task__newContainer">
-            <button id="newTaskAction" onclick="showNewTask();" class="button button--succes" data-callback="ok" type="button">Dodaj nowe zadanie!</button>
+            <button id="newTaskAction" onclick="showNewTask();" class="button button--succes button--newTask" data-callback="ok" type="button">Dodaj nowe zadanie!</button>
     </div>
    
     
