@@ -134,12 +134,14 @@ function editTask(id, title, status, groups){
     var modal = elem.querySelector('.modal');
     document.body.appendChild(modal);
 
-     modalOperationsOnClick(modal, function(){
+     modalOperationsOnClick(modal, function(data){
          var postData = convertFormToPostData(modal);
          ajax('editTask', function(){
                 
+            if(data == 'ok'){
                 openModal('modalAlert','', "Zadanie zostało zmienione!");
                 reloadTasks();
+            }
             }, postData + "&id=" + id)
      });
     

@@ -125,10 +125,10 @@
         <label class="col-xs-12">Status zadania: <input type="text" name="status" value="<%= status %>"></label>
         <label class="col-xs-12">Wybierz grupę: 
             <select name="groups" value="<%= groups %>">
-                <option value="Bugs">Bugs</option>
-                <option value="Website">Website</option>
-                <option value="Server">Server</option>
-                <option value="Other">Other</option>
+                <option <%= groups === "Bugs" ? "selected" : '' %> value="Bugs">Bugs</option>
+                <option  <%= groups === "Website" ? "selected" : '' %> value="Website">Website</option>
+                <option  <%= groups === "Server" ? "selected" : '' %> value="Server">Server</option>
+                <option  <%= groups === "Other" ? "selected" : '' %> value="Other">Other</option>
             </select>
         <button class="button button--succes" data-callback="ok" type="button">OK</button> <button class="button button--failure" data-callback="cancel" type="button">Anuluj</button>
         </label>
