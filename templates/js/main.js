@@ -14,8 +14,9 @@ window.onload = function(){
 function createTabTask(element){
     var tabsButton = element.querySelectorAll('.task__Header');
     var tasks = element.querySelectorAll('.task__element');
+    var activeGroup = localStorage.getItem("activeGroup");
 
-    showGroup(tabsButton[0].dataset.group);
+    showGroup(activeGroup || tabsButton[0].dataset.group);
     
     for (var i = 0; i < tabsButton.length; i++) {
         tabsButton[i].addEventListener("click", function(){
@@ -25,6 +26,8 @@ function createTabTask(element){
         });
     }
     function showGroup(groupName) {
+        localStorage.setItem('activeGroup', groupName);
+
         for (var i = 0; i < tabsButton.length; i++) {
             if(tabsButton[i].dataset.group !== groupName){
                 tabsButton[i].classList.remove("active");
