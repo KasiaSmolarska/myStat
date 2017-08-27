@@ -114,7 +114,6 @@
             <input type="radio" name="status" value="1" id="emoticon-cool"> <label for="emoticon-cool"><i style="color:green;" class="mdi mdi-emoticon-cool"></i></label>
             <input type="radio" name="status" value="2" id="emoticon-neutral"> <label for="emoticon-neutral"><i style="color:yellow;" class="mdi mdi-emoticon-neutral"></i></label>
             <input type="radio" name="status" value="3" id="emoticon-poop"><label for="emoticon-poop"><i style="color:brown;" class="mdi mdi-emoticon-poop"></i></label>
-            
         </div>
         <div class="form__row">
             <label class="form__label">Wybierz grupę: </label>
@@ -136,9 +135,12 @@
                 <label class="form__label">Tytuł zadania: </label>
                 <input class="form__input" type="text" name="title" value="<%= title %>">
             </div>
-            <div class="form__row">
+            <div class="form__row  form__row--radio">
                 <label class="form__label">Status zadania: </label>
-                <input class="form__input" type="text" name="status" value="<%= status %>">
+                <input type="radio" name="status" value="0" <%= status===0 ? "checked" : '' %> id="emoticon-sad"> <label for="emoticon-sad"><i style="color:red;" class="mdi mdi-emoticon-sad"></i></label>
+                <input type="radio" name="status" value="1" <%= status===1 ? "checked" : '' %> id="emoticon-cool"> <label for="emoticon-cool"><i style="color:green;" class="mdi mdi-emoticon-cool"></i></label>
+                <input type="radio" name="status" value="2" <%= status===2 ? "checked" : '' %> id="emoticon-neutral"> <label for="emoticon-neutral"><i style="color:yellow;" class="mdi mdi-emoticon-neutral"></i></label>
+                <input type="radio" name="status" value="3" <%= status===3 ? "checked" : '' %> id="emoticon-poop"><label for="emoticon-poop"><i style="color:brown;" class="mdi mdi-emoticon-poop"></i></label>
             </div>
             <div class="form__row">
                 <label class="form__label">Wybierz grupę: </label>
