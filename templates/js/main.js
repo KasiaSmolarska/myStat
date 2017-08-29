@@ -1,16 +1,25 @@
+/**
+ *  Funkcja pobiera wszystkie taski i wyświetla je w formie tabsów z tabelką
+ *  do poprawnego działania wymaga dowolnego elementu z id 'tasklist' 
+ */
 function reloadTasks(){
-    ajax('getTasks', function (data) {
-
-    var div = document.getElementById('tasksList');
-    var taskTemplate = document.getElementById('taskTemplate').innerText;
-    div.innerHTML = ejs.render( taskTemplate, {data: data});
-    createTabTask(div);
-});
+    ajax('getTasks', function (tasks) {
+        var div = document.getElementById('tasksList');
+        var taskTemplate = document.getElementById('taskTemplate').innerText;
+        div.innerHTML = ejs.render( taskTemplate, {data: tasks});
+        createTabTask(div);
+    });
 }
+
 window.onload = function(){
     reloadTasks();
 } 
 
+/**
+ *  Funkcja tworzy logikę dla tabsów (podpina eventy
+ *  na headery oraz wywołuje funkcję do ukrywania tasków)
+ *  @param {element} element - element HTML
+ */
 function createTabTask(element){
     var tabsButton = element.querySelectorAll('.task__Header');
     var tasks = element.querySelectorAll('.task__element');
@@ -20,11 +29,17 @@ function createTabTask(element){
     
     for (var i = 0; i < tabsButton.length; i++) {
         tabsButton[i].addEventListener("click", function(){
-        var groupName = this.dataset.group;
-        
-        showGroup(groupName);
+            var groupName = this.dataset.group;
+            showGroup(groupName);
         });
     }
+
+    /**
+     * Wewnętrzna funkcja createTabTask, odpowiada za
+     * określanie aktywnego nagłówka oraz 
+     * filtrowanie po nazwie grupy
+     * @param {string} groupName nazwa grupy zaczynająca się wielką literą
+     */
     function showGroup(groupName) {
         localStorage.setItem('activeGroup', groupName);
 
