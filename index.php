@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 if (count($_GET) == 0 ) {
    header('Content-Type: text/html; charset=utf-8');
    include 'templates/index.html';
@@ -20,5 +21,6 @@ if (count($_GET) == 0 ) {
    }
    include 'engine/database.php';
    include 'controllers/tasks.php';
+   include 'controllers/account.php';
    include 'actions/' . $_GET['action'] . '.php';
 }

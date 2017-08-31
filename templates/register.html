@@ -9,8 +9,8 @@
 
     <script>
         function sendRegisterForm(postdata){
-             ajax('register', function(){
-
+             ajax('register', function(data){
+                 console.log(data);
              },postdata)
         }
     </script>
