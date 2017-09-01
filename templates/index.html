@@ -10,30 +10,15 @@
     <script src="templates/js/ajax.js"></script>
     <script src="templates/js/main.js"></script>
 
-    <noscript id="taskTemplate">
-       <?php include 'templates/ejs/taskTemplate.ejs' ?>
-    </noscript>
 
-    <noscript id="modalTemplate">
-        <?php include 'templates/ejs/modalTemplate.ejs' ?>
-    </noscript>
+    <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate"] ?>
 
-    <noscript id="modalConfirm">
-        <?php include 'templates/ejs/modalConfirm.ejs' ?>
-    </noscript>
+    <?php foreach ($ejsTemplates as $templateName) : ?>
+        <noscript id="<?php echo $templateName ?>">
+        <?php include 'templates/ejs/'.$templateName.'.ejs' ?>
+        </noscript>
 
-    <noscript id="modalAlert">
-        <?php include 'templates/ejs/modalAlert.ejs' ?>
-    </noscript>
-
-    <noscript id="addNewTask">
-        <?php include 'templates/ejs/addNewTask.ejs' ?>
-    </noscript>
-
-    <noscript id="editTaskTemplate">
-        <?php include 'templates/ejs/editTaskTemplate.ejs' ?>
-    </noscript>
-
+    <?php endforeach ?>
 
 </head>
 <body>
