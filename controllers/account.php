@@ -25,3 +25,7 @@ function accountLogin($email, $password){
 function getLoginId(){
     return isset($_SESSION['id']) ? $_SESSION['id'] : -1;
 }
+
+function logOut(){
+    session_destroy();
+}

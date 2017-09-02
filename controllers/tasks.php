@@ -1,7 +1,7 @@
 <?php
 
 function getTask(){
-    return dbQuery("SELECT * FROM task_list WHERE id = '" . getLoginId() . "' ORDER BY Date ASC");
+    return dbQuery("SELECT * FROM task_list WHERE User_id = '" . getLoginId() . "' ORDER BY Date ASC");
 }
 
 function addTask($title,$status,$group){
