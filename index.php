@@ -3,11 +3,16 @@
 session_start();
 if (count($_GET) == 0 ) {
    header('Content-Type: text/html; charset=utf-8');
-   include 'templates/index.html';
+   $htmlTemplate = 'index';
+   include 'templates/templates.php';
+   //include 'templates/index.html';
+   
 } else if (isset($_GET['page'])) {
    
    header('Content-Type: text/html; charset=utf-8');
-   include 'templates/' . $_GET['page'] .'.html';
+   $htmlTemplate = $_GET['page'];
+   include 'templates/templates.php';
+   //include 'templates/' . $_GET['page'] .'.html';
 } else {
  
    header('Content-Type: application/javascript; charset=utf-8');

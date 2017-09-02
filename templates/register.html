@@ -1,28 +1,14 @@
-<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700,700i" rel="stylesheet">
-    <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="templates/css/index.css">
-    <script src="templates/js/ajax.js"></script>
+<script>
+    function sendRegisterForm(postdata){
+        ajax('register', function(data){
+            console.log(data);
+        },postdata)
+    }
+</script>
 
-    <script>
-        function sendRegisterForm(postdata){
-             ajax('register', function(data){
-                 console.log(data);
-             },postdata)
-        }
-    </script>
-
-    <title>Document</title>
-</head>
-<body>
-    <form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
-        <label for="email">Email:</label><input id="email" type="email" name="email">
-        <label for="password">Hasło:</label><input id="password" type="password" name="password">
-        <label for="repeatPassword">Powtórz hasło:</label><input id="repeatPassword" type="password" name="repeatPassword">
-        <button class="button button--succes">Zarejestruj się</button>
-    </form>
-</body>
-</html>
+<form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
+    <label for="email">Email:</label><input id="email" type="email" name="email">
+    <label for="password">Hasło:</label><input id="password" type="password" name="password">
+    <label for="repeatPassword">Powtórz hasło:</label><input id="repeatPassword" type="password" name="repeatPassword">
+    <button class="button button--succes">Zarejestruj się</button>
+</form>
