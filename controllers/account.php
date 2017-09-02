@@ -5,8 +5,13 @@ function accountRegister($email,$password){
         return ['Status' => 'Error', 'Description' => 'Przesłano niepoprawny adres email :'. $email];
     }  
     $hashPassword = md5($password);
+    try {
+         dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `City`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','','',NOW())");
 
-    dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `City`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','','',NOW())");
+    } catch(Exception $e){
+        return ['Status' => 'Error', 'Description' => 'Nie udało się stworzyć konta, być może masz już konto założone na ten adres email'];
+    }
+   
     return ['Status' => 'OK', 'Description' => 'Wszystko OK'];
 }
 

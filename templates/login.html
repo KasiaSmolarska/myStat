@@ -1,14 +1,8 @@
-<script>
-    function sendRegisterForm(postdata){
-        ajax('login', function(data){
-            console.log(data);
-            window.location.reload();
-        },postdata)
-    }
-</script>
-
-<form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
+<script src="templates/js/addicionalFunction.js"></script>
+<form method="post" onsubmit="accountLogin(convertFormToPostData(this)); return false;">
     <label for="email">Email:</label><input id="email" type="email" name="email">
     <label for="password">Hasło:</label><input id="password" type="password" name="password">
     <button class="button button--succes">Zaloguj się</button>
 </form>
+
+<div>Albo <a href="index.php?page=register">Zarejestruj się</a></div>

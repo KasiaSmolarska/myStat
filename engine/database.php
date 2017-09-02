@@ -6,8 +6,7 @@ function dbQuery($query){
     $result = mysqli_query($connect, $query);
 
     if ($result === false) {
-        echo "Błąd wykonywania zapytanie : " . mysqli_error($connect);
-        return $result;
+        throw new Exception("Błąd wykonywania zapytania : " . mysqli_error($connect), 1);
     }
 
     if ($result === true) {

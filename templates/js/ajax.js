@@ -1,6 +1,6 @@
 /**
- * @param {string} action
-* @param {function} callback
+* @param {string} action
+* @param {function} callback - fukcja wykonuje się po pobraniu danych, w parametrze przekazywane są dane przetworzone na tablice
 * @param postData 
 */
 function ajax(action, callback, postData){

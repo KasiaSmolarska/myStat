@@ -9,7 +9,7 @@ if ($_POST['password'] === $_POST['repeatPassword']) {
 }
 
 else{
-    echo '{"status" : "Error"}';
+    echo '{"Status" : "Error"}';
 }
 
 

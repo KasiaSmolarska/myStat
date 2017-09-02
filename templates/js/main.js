@@ -83,39 +83,6 @@ function removeTask(id, title) {
     }, "Czy na pewno chcesz usunąć to zadanie o nazwie: <br/> " + title + "?");
 }
 
-function openModal(templateID, callback, title) {
-    var modalTemplate = document.getElementById('modalTemplate').innerText;
-    var contentTemplate = document.getElementById(templateID).innerText;
-    var content = ejs.render(contentTemplate, {});
-    var elem = document.createElement('div');
-    elem.innerHTML = ejs.render(modalTemplate, {
-        title: title,
-        content: content
-    });
-    var modal = elem.querySelector('.modal');
-    document.body.appendChild(modal);
-    modalOperationsOnClick(modal, callback);
-}
-
-function modalOperationsOnClick(modal, callback) {
-    var dataCallback = modal.querySelectorAll('[data-callback]');
-
-    for (var i = 0; i < dataCallback.length; i++) {
-        var button = dataCallback[i];
-
-        button.addEventListener('click', function () {
-
-            var status = this.dataset.callback;
-
-            if (typeof callback === "function") {
-                callback(status, modal);
-            }
-            modal.remove();
-        });
-
-    }
-}
-
 function showNewTask() {
 
     openModal('addNewTask', function (status, modal) {
