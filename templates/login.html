@@ -1,0 +1,13 @@
+<script>
+    function sendRegisterForm(postdata){
+        ajax('login', function(data){
+            console.log(data);
+        },postdata)
+    }
+</script>
+
+<form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
+    <label for="email">Email:</label><input id="email" type="email" name="email">
+    <label for="password">Hasło:</label><input id="password" type="password" name="password">
+    <button class="button button--succes">Zaloguj się</button>
+</form>

@@ -12,7 +12,7 @@ function accountRegister($email,$password){
 
 function accountLogin($email, $password){
     $hashPassword = md5($password);
-    $user = dbQuery("SELECT * FROM users WHERE Email='$email' AND Password='$hashPassword'");
+    $user = dbQuery("SELECT ID FROM users WHERE Email='$email' AND Password='$hashPassword'");
 
     if(count($user) === 0){
         return ['Status' => 'Error', 'Description' => 'Niepoprawne dane logowania'];
@@ -20,4 +20,8 @@ function accountLogin($email, $password){
     
     $_SESSION['id'] = $user[0]['ID'];
     return ['Status' => 'OK', 'Description' => 'Wszystko OK'];
+}
+
+function getLoginId(){
+    return isset($_SESSION['id']) ? $_SESSION['id'] : -1;
 }

@@ -1,9 +1,15 @@
 <?php
 
 session_start();
+include 'controllers/account.php';
+
 if (count($_GET) == 0 ) {
    header('Content-Type: text/html; charset=utf-8');
-   $htmlTemplate = 'index';
+   if (getLoginId() === -1) {
+       $htmlTemplate = 'login';
+   } else {
+      $htmlTemplate = 'index';
+   }
    include 'templates/templates.php';
    //include 'templates/index.html';
    
@@ -26,6 +32,5 @@ if (count($_GET) == 0 ) {
    }
    include 'engine/database.php';
    include 'controllers/tasks.php';
-   include 'controllers/account.php';
    include 'actions/' . $_GET['action'] . '.php';
 }
