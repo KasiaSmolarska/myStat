@@ -53,6 +53,8 @@ function modalOperationsOnClick(modal, callback) {
     }
 }
 
+
+
 function sendRegisterForm(postdata) {
     var inputs = document.querySelectorAll('input');
     for (var i = 0; i < inputs.length; i++) {
@@ -61,14 +63,17 @@ function sendRegisterForm(postdata) {
             return;
         }
     }
-    ajax('register', function (data) {
-        console.log(data);
-        if (data.Status === 'OK') {
-            window.location.search = '';
+    ajax('register', function (ajaxData) {
+    console.log(ajaxData);
+        if(ajaxData['Status'] !== 'OK'){
+            showMessage(ajaxData['Description']);
+            return;
         }
         else {
-            openModal('modalAlert', '', "Użytkownik o tym adresie email jest już zarejestrowany!");
+            window.location.search = '';
+            showMessage(ajaxData['Description']);
         }
+        
     }, postdata)
 }
 
@@ -86,8 +91,25 @@ function accountLogin(postdata) {
             return;
         }
     }
-    ajax('login', function (status) {
-        console.log(status);
+    ajax('login', function (ajaxData) {
+        if(ajaxData['Status'] !== 'OK'){
+            showMessage(ajaxData['Description']);
+            return;
+        }
         window.location.reload();
     }, postdata)
+}
+
+function showMessage(description) {
+    
+    var message = document.querySelector('.message');
+    message.classList.add('message__show');
+    var messageContainer = document.createElement('div');
+    messageContainer.innerText = description;
+    message.appendChild(messageContainer);
+   
+    setTimeout(function(){
+       message.classList.remove('message__show');
+       messageContainer.remove();
+     }, 5000);
 }

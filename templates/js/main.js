@@ -63,8 +63,13 @@ function createTabTask(element) {
 function submitAddTask(form) {
     var postData = convertFormToPostData(form);
 
-    ajax('addTask', function () {
-        console.log("dziwacznie");
+    ajax('addTask', function (ajaxData) {
+        if(ajaxData['Status'] !== 'OK'){
+            showMessage(ajaxData['Description']);
+            return;
+        }
+
+        showMessage(ajaxData['Description']);
         reloadTasks();
     }, postData)
 }
@@ -110,14 +115,13 @@ function editTask(id, title, status, groups) {
 
     modalOperationsOnClick(modal, function (data) {
         var postData = convertFormToPostData(modal);
-        ajax('editTask', function () {
+        ajax('editTask', function (ajaxData) {
 
-            if (data == 'ok') {
-                openModal('modalAlert', '', "Zadanie zostało zmienione!");
+            if (ajaxData['status'] === 'ok') {
+                showMessage("Zadanie: '" + title + "' zostało zmienione");
                 reloadTasks();
             }
         }, postData + "&id=" + id)
     });
 
 }
-

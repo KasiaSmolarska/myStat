@@ -221,6 +221,36 @@ body{
     }
 }
 
+.message{
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 5000;
+    text-align: center;
+    background: #4E90FE;
+    color: #fff;
+    display: flex;
+    align-items:center;
+    line-height: 20px;
+    font-size: 18px;
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    transition: all 0.6s;
+
+    i{
+        margin: 0px 20px;
+    }
+
+    &__show{
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
 
     header{
         background-color: $primaryColor;

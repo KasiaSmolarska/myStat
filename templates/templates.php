@@ -23,5 +23,9 @@
 </head>
 <body>
     <?php include 'templates/' . $htmlTemplate . '.html'?>
+
+    <div class="message">
+        <i style="font-size:30px; "class="mdi mdi-alert-outline"></i>
+    </div>
 </body>
 </html>

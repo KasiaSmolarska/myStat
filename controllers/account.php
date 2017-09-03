@@ -12,7 +12,7 @@ function accountRegister($email,$password){
         return ['Status' => 'Error', 'Description' => 'Nie udało się stworzyć konta, być może masz już konto założone na ten adres email'];
     }
    
-    return ['Status' => 'OK', 'Description' => 'Wszystko OK'];
+    return ['Status' => 'OK', 'Description' => 'Brawo. Zostałeś zarejestrowany!'];
 }
 
 function accountLogin($email, $password){
