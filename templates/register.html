@@ -1,14 +1,31 @@
 <script src="templates/js/addicionalFunction.js"></script>
+<link rel="stylesheet" href="templates/css/userAccess.css">
+
 <div class="account">
     <div class="account__content">
-        <form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
-            <label for="email">Email:</label><input id="email" type="email" name="email">
-            <label for="password">Hasło:</label><input id="password" type="password" name="password">
-            <label for="repeatPassword">Powtórz hasło:</label><input id="repeatPassword" type="password" name="repeatPassword">
-            <button class="button button--succes">Zarejestruj się</button>
+        <div class="account__title">Zarejestruj się!</div>
+        <div class="account__description">
+            Nie masz jeszcze konta? <br> Tutaj możesz je stworzyć. Uzupełnij poniżej swoje dane.
+        </div>
+        <form class="form" method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
+            <div class="form__row">
+                <label for="email" class="form__label">Email: </label>
+                <input class="form__input account__input" id="email" type="email" name="email">
+            </div>
+            <div class="form__row">
+                <label for="password" class="form__label">Hasło: </label>
+                <input class="form__input account__input" id="password" type="password" name="password">
+            </div>
+              <div class="form__row">
+                <label for="repeatPassword" class="form__label">Powtórz hasło: </label>
+                <input class="form__input account__input" id="repeatPassword" type="password" name="repeatPassword">
+            </div>
+            <div class="form__row">
+            <button class="button button--succes account__button">Zarejestruj się</button>
+            </div>
         </form>
 
-        <div>Albo <a href="index.php">Zaloguj się</a></div>
+        <div>Masz już konto? <a href="index.php">Zaloguj się</a></div>
     </div>
 </div>
 <div class="account__overlay"></div>
