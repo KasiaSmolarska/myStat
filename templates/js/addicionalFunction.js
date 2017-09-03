@@ -6,7 +6,13 @@ window.addEventListener('load', function () {
     }
 })
 
-
+/**
+ *  Funkcja tworzy nowy element html z modalem na podstawie dwóch szablonów ejsa
+ *  @param {string} templateID - nazwa templatki modala, która jest wewnątrz
+ *  @param {function} callback - funkcja przekazywana do modalOperationsOnClick
+ *  @param {string} title - string wyświetlany jako tytuł modala
+ * 
+ */
 
 function openModal(templateID, callback, title) {
     var modalTemplate = document.getElementById('modalTemplate').innerText;
@@ -22,6 +28,12 @@ function openModal(templateID, callback, title) {
     modalOperationsOnClick(modal, callback);
 }
 
+/**
+ *  Funkcja dodająca eventListener do elementów zawierających dataCallback
+ *  dzięki tej funkcji po kliknięciu elementu, modal zostaje zamknięty oraz wywołuje się funkcja callback
+ *  @param {element} modal - element html zawierający modala
+ *  @param {function} callback - funkcja wykonująca operacje po kliknięciu elementu html, która zawiera atrybut dataCallback
+ */
 function modalOperationsOnClick(modal, callback) {
     var dataCallback = modal.querySelectorAll('[data-callback]');
 
@@ -61,10 +73,10 @@ function sendRegisterForm(postdata) {
 }
 
 /**
+ *  Funkcja sprawdza, czy nie doszło do próby przesłania formularza, zawierającego puste pole
+ *  jesli nie to przesyła dane w ajax (po wykonaniu ajaxa odpala się funckja 'reload', która przeładowuje okno)
  * 
- * 
- * 
- * 
+ *  @param {string} postdata np. nazwa=abc&status=1 
  */
 function accountLogin(postdata) {
     var inputs = document.querySelectorAll('input');
