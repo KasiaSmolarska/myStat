@@ -1,3 +1,13 @@
+
+window.addEventListener('load', function () {
+    var account = document.querySelector('.account');
+    if (account !== null) {
+        account.classList.add('account__show');
+    }
+})
+
+
+
 function openModal(templateID, callback, title) {
     var modalTemplate = document.getElementById('modalTemplate').innerText;
     var contentTemplate = document.getElementById(templateID).innerText;

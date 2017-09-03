@@ -11,9 +11,9 @@ function reloadTasks() {
     });
 }
 
-window.onload = function () {
+window.addEventListener('load', function () {
     reloadTasks();
-}
+})
 
 /**
  *  Funkcja tworzy logikę dla tabsów (podpina eventy

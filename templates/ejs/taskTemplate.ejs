@@ -30,7 +30,7 @@
                 <td>
                 <span >
                     <span class="task__status  <%= grupa[i].Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
-                    <% var colors = ['red', 'green', 'yellow', 'brown']; %>
+                    <% var colors = ['red', 'green', '#f0cf02', 'brown']; %>
                     <% var icons = ['emoticon-sad', 'emoticon-cool', 'emoticon-neutral', 'emoticon-poop' ];%>
                         <i style="color:<%= colors[grupa[i].Status]%>" class="mdi mdi-<%= icons[grupa[i].Status] %> "></i>
                     </span>

@@ -1,9 +1,14 @@
 <script src="templates/js/addicionalFunction.js"></script>
-<form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
-    <label for="email">Email:</label><input id="email" type="email" name="email">
-    <label for="password">Hasło:</label><input id="password" type="password" name="password">
-    <label for="repeatPassword">Powtórz hasło:</label><input id="repeatPassword" type="password" name="repeatPassword">
-    <button class="button button--succes">Zarejestruj się</button>
-</form>
+<div class="account">
+    <div class="account__content">
+        <form method="post" onsubmit="sendRegisterForm(convertFormToPostData(this)); return false;">
+            <label for="email">Email:</label><input id="email" type="email" name="email">
+            <label for="password">Hasło:</label><input id="password" type="password" name="password">
+            <label for="repeatPassword">Powtórz hasło:</label><input id="repeatPassword" type="password" name="repeatPassword">
+            <button class="button button--succes">Zarejestruj się</button>
+        </form>
 
-<div>Albo <a href="index.php">Zaloguj się</a></div>
+        <div>Albo <a href="index.php">Zaloguj się</a></div>
+    </div>
+</div>
+<div class="account__overlay"></div>
