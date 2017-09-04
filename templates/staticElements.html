@@ -1,8 +1,18 @@
 <header class="header">
-    <h1>hello <?php  echo $_SESSION['FirstName']; ?> </h1>
-    <div class="header__account" onclick="showElement(this)"><i class="mdi mdi-account-box-outline"></i>
-        <div class="header__menu">
-            <a href="index.php?page=UserData" class="header__AccountEdit">Mój profil</a>
-            <div class="header__logout" onclick="ajax('logout', function(){ window.location.reload(); })">Wyloguj się</div></div>  
+    <div class="header__welcome">
+            <a href="index.php"><i style="font-size:35px;" class="mdi mdi-home"></i></a>
+            <h1>hello <?php  echo $_SESSION['FirstName']; ?> </h1>
+    </div>
+    
+    <div class="header__account">
+        <div class="header__avatar"><img src="<?php echo $_SESSION['Avatar'] ?>" alt=""></div>
+        <div class="header__userName">
+            <div> <?php  echo $_SESSION['FirstName']; echo '&nbsp;' . $_SESSION['SecondName']; ?></div>
+        </div>
+        <div class="header__info" onclick="showElement(this)"> <i class="mdi mdi-dots-vertical"></i>
+            <div class="header__menu">
+                <a href="index.php?page=UserData" class="header__AccountEdit">Mój profil</a>
+                <div class="header__logout" onclick="ajax('logout', function(){ window.location.reload(); })">Wyloguj się</div></div>  
+        </div>
     </div>
 </header>

@@ -16,9 +16,13 @@ if (count($_GET) == 0 ) {
 } else if (isset($_GET['page'])) {
    
    header('Content-Type: text/html; charset=utf-8');
-   $htmlTemplate = $_GET['page'];
+   if (getLoginId() === -1 and $_GET['page'] !== 'register') {
+       $htmlTemplate = 'login';
+   } else{
+        $htmlTemplate = $_GET['page'];
+   }
    include 'templates/templates.php';
-   //include 'templates/' . $_GET['page'] .'.html';
+        //include 'templates/' . $_GET['page'] .'.html';
 } else {
  
    header('Content-Type: application/javascript; charset=utf-8');

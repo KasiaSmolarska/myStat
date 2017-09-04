@@ -1,7 +1,13 @@
 <% for (var key in data) { %>
     <% if (data.hasOwnProperty(key)) { %>
         <% var grupa = data[key]; %>
-            <div class="form user">
+
+        <div class="profil">
+        <div class="profil__image">
+            <img src="<?php echo $_SESSION['Avatar'] ?>" alt="">
+        </div>
+            <div class="form profil__data">
+                <div class="profil__sectionTitle">Informacje o tobie:</div>
                 <div class="form__row">
                     <label class="form__label">Imię: </label>
                     <span><%=  grupa.FirstName %></span>
@@ -23,5 +29,6 @@
                     <span><%=  grupa.RegisterDate %></span>
                 </div>
             </div>
+        </div>
     <% } %>
 <% } %>

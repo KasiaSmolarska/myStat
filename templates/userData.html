@@ -3,35 +3,5 @@
 
 <?php include 'templates/staticElements.html'; ?>
 
-<noscript id="userData">
-
-        <% for (var key in data) { %>
-            <% if (data.hasOwnProperty(key)) { %>
-                <% var grupa = data[key]; %>
-                    <div class="form user">
-                        <div class="form__row">
-                            <label class="form__label">Imię: </label>
-                            <span><%=  grupa.FirstName %></span>
-                        </div>
-                        <div class="form__row">
-                            <label class="form__label">Nazwisko: </label>
-                            <span><%=  grupa.SecondName %></span>
-                        </div>
-                        <div class="form__row">
-                            <label class="form__label">Email: </label>
-                            <span><%=  grupa.Email %></span>
-                        </div>
-                        <div class="form__row">
-                            <label class="form__label">Miasto: </label>
-                            <span><%=  grupa.City %></span>
-                        </div>
-                        <div class="form__row">
-                            <label class="form__label">Data rejestracji: </label>
-                            <span><%=  grupa.RegisterDate %></span>
-                        </div>
-                    </div>
-            <% } %>
-        <% } %>
-
-</noscript>
+<noscript id="userData"></noscript>
 <div id="dane"></div>
