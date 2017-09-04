@@ -274,6 +274,11 @@ body{
             padding: 10px;
             z-index: 3000;
             text-align: center;
+            box-shadow:$primaryShadow;
+
+            div{
+                margin: 10px 0;
+            }
            
         }
 

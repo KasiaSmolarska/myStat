@@ -4,6 +4,10 @@ window.addEventListener('load', function () {
     if (account !== null) {
         account.classList.add('account__show');
     }
+    var dane = document.getElementById('dane');
+    if (dane !== null) {
+        showUserData();
+    }
 })
 
 /**
@@ -114,11 +118,15 @@ function showMessage(description) {
     }, 5000);
 }
 
+/**
+ *  Funkcja pozwala na stworzenie wysuwanego okienka np. menu
+ *  pod warunkiem, że ukryte okienko jest wewnątrz
+ *  i posiada visibility: hidden oraz opacity: 0 oraz jest elementem DIV
+ * 
+ *  @param {element} element - dowolny element HTML posiadający klasę
+ */
 function showElement(element) {
 
-    var elementClass = element.className;
-    console.log(elementClass);
-    var element = document.querySelector('.' + elementClass);
     var elementChildren = element.children;
 
     for (var i = 0; i < elementChildren.length; i++) {

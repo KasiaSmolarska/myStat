@@ -17,13 +17,16 @@ function accountRegister($email,$password){
 
 function accountLogin($email, $password){
     $hashPassword = md5($password);
-    $user = dbQuery("SELECT ID FROM users WHERE Email='$email' AND Password='$hashPassword'");
+    $user = dbQuery("SELECT ID , FirstName, SecondName FROM users WHERE Email='$email' AND Password='$hashPassword'");
 
     if(count($user) === 0){
         return ['Status' => 'Error', 'Description' => 'Niepoprawne dane logowania'];
     }
     
     $_SESSION['id'] = $user[0]['ID'];
+    $_SESSION['FirstName'] = $user[0]['FirstName'];
+    $_SESSION['SecondName'] = $user[0]['SecondName'];
+
     return ['Status' => 'OK', 'Description' => 'Wszystko OK'];
 }
 

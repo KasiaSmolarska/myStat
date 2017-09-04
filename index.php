@@ -8,7 +8,7 @@ if (count($_GET) == 0 ) {
    if (getLoginId() === -1) {
        $htmlTemplate = 'login';
    } else {
-      $htmlTemplate = 'index';
+      $htmlTemplate = 'tasks';
    }
    include 'templates/templates.php';
    //include 'templates/index.html';
@@ -32,5 +32,6 @@ if (count($_GET) == 0 ) {
    }
    include 'engine/database.php';
    include 'controllers/tasks.php';
+   include 'controllers/user.php';
    include 'actions/' . $_GET['action'] . '.php';
 }

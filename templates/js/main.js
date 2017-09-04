@@ -12,8 +12,27 @@ function reloadTasks() {
 }
 
 window.addEventListener('load', function () {
-    reloadTasks();
+
+    var taskList = document.getElementById('tasksList');
+    if(taskList !== null){
+        reloadTasks();
+    }
+    
 })
+
+
+function showUserData(){
+console.log("data")
+    ajax('getUserData', function (data) {
+        
+        var div = document.getElementById('dane');
+        var taskTemplate = document.getElementById('userData').innerText;
+       
+        div.innerHTML = ejs.render(taskTemplate, { data: data });
+        
+        
+    });
+}
 
 /**
  *  Funkcja tworzy logikę dla tabsów (podpina eventy

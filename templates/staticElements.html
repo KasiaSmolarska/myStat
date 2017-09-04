@@ -1,0 +1,8 @@
+<header class="header">
+    <h1>hello <?php  echo $_SESSION['FirstName']; ?> </h1>
+    <div class="header__account" onclick="showElement(this)"><i class="mdi mdi-account-box-outline"></i>
+        <div class="header__menu">
+            <a href="index.php?page=UserData" class="header__AccountEdit">Mój profil</a>
+            <div class="header__logout" onclick="ajax('logout', function(){ window.location.reload(); })">Wyloguj się</div></div>  
+    </div>
+</header>
