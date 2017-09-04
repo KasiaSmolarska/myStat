@@ -64,8 +64,8 @@ function sendRegisterForm(postdata) {
         }
     }
     ajax('register', function (ajaxData) {
-    console.log(ajaxData);
-        if(ajaxData['Status'] !== 'OK'){
+        console.log(ajaxData);
+        if (ajaxData['Status'] !== 'OK') {
             showMessage(ajaxData['Description']);
             return;
         }
@@ -73,7 +73,7 @@ function sendRegisterForm(postdata) {
             window.location.search = '';
             showMessage(ajaxData['Description']);
         }
-        
+
     }, postdata)
 }
 
@@ -92,7 +92,7 @@ function accountLogin(postdata) {
         }
     }
     ajax('login', function (ajaxData) {
-        if(ajaxData['Status'] !== 'OK'){
+        if (ajaxData['Status'] !== 'OK') {
             showMessage(ajaxData['Description']);
             return;
         }
@@ -101,15 +101,31 @@ function accountLogin(postdata) {
 }
 
 function showMessage(description) {
-    
+
     var message = document.querySelector('.message');
     message.classList.add('message__show');
     var messageContainer = document.createElement('div');
     messageContainer.innerText = description;
     message.appendChild(messageContainer);
-   
-    setTimeout(function(){
-       message.classList.remove('message__show');
-       messageContainer.remove();
-     }, 5000);
+
+    setTimeout(function () {
+        message.classList.remove('message__show');
+        messageContainer.remove();
+    }, 5000);
+}
+
+function showElement(element) {
+
+    var elementClass = element.className;
+    console.log(elementClass);
+    var element = document.querySelector('.' + elementClass);
+    var elementChildren = element.children;
+
+    for (var i = 0; i < elementChildren.length; i++) {
+        var child = elementChildren[i];
+        if (child.tagName === "DIV") {
+
+            child.classList.toggle('show');
+        }
+    }
 }
