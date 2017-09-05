@@ -10,7 +10,7 @@ function accountRegister($email,$password){
         $email = strtolower( $email ); 
         $hashEmail = md5( $email );
         $emailLink = "https://www.gravatar.com/avatar/$hashEmail?d=https%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg&s=250";
-         dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `City`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','','$emailLink',NOW())");
+         dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `Sex`, `City`, `Job`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','0','','','$emailLink',NOW())");
 
     } catch(Exception $e){
         return ['Status' => 'Error', 'Description' => 'Nie udało się stworzyć konta, być może masz już konto założone na ten adres email'];
