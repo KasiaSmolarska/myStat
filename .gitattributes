@@ -1,1 +1,2 @@
 *.html  linguist-vendored=true
+*.ejs linguist-language=JavaScript
