@@ -9,7 +9,7 @@ function accountRegister($email,$password){
         $email = trim( $email );
         $email = strtolower( $email ); 
         $hashEmail = md5( $email );
-        $emailLink = "https://www.gravatar.com/avatar/$hashEmail?d=https%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg&s=200";
+        $emailLink = "https://www.gravatar.com/avatar/$hashEmail?d=https%3A%2F%2Fexample.com%2Fimages%2Favatar.jpg&s=250";
          dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `City`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','','$emailLink',NOW())");
 
     } catch(Exception $e){
@@ -41,4 +41,10 @@ function getLoginId(){
 
 function logOut(){
     session_destroy();
+}
+
+function getUserData(){
+     $userData =  dbQuery("SELECT * FROM users WHERE ID = '" . getLoginId() . "'");
+
+     return $userData;
 }

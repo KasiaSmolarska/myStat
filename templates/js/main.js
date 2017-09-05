@@ -14,24 +14,52 @@ function reloadTasks() {
 window.addEventListener('load', function () {
 
     var taskList = document.getElementById('tasksList');
-    if(taskList !== null){
+    if (taskList !== null) {
         reloadTasks();
     }
-    
+
 })
 
 
-function showUserData(){
-console.log("data")
+function showUserData() {
+
     ajax('getUserData', function (data) {
-        
         var div = document.getElementById('dane');
         var taskTemplate = document.getElementById('userData').innerText;
-       
         div.innerHTML = ejs.render(taskTemplate, { data: data });
-        
-        
+
+        //tu jest funkcja
+        ajax('getProfilStats', function (data) {
+            var contex = document.getElementById('profilTaskChart').getContext('2d');
+            var myPieChart = new Chart(contex, {
+                type: 'pie',
+                data: {
+                    labels: ["Ukończono: " + data.procentage.done + " ( " + data.taskDone + " zadań )", "Do zrobienia: " + data.procentage.undone + " ( " + data.taskUndone + " zadań )"],
+                    datasets: [{
+                        label: "Taski: ",
+                        data: [data.taskDone, data.taskUndone],
+                        backgroundColor: [
+                            'rgba(33, 184, 13, 0.86)',
+                            'rgba(206, 73, 1, 0.86)'
+                        ]
+                    }]
+                },
+                options: {
+                    cutoutPercentage: 10,
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)',
+                            fontSize : 13
+                        }
+                    }
+                }
+            });
+            console.log(data);
+        })
     });
+
+
 }
 
 /**
@@ -83,7 +111,7 @@ function submitAddTask(form) {
     var postData = convertFormToPostData(form);
 
     ajax('addTask', function (ajaxData) {
-        if(ajaxData['Status'] !== 'OK'){
+        if (ajaxData['Status'] !== 'OK') {
             showMessage(ajaxData['Description']);
             return;
         }

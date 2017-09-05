@@ -3,22 +3,33 @@
         <% var grupa = data[key]; %>
 
         <div class="profil">
-        <div class="profil__image">
-            <img src="<?php echo $_SESSION['Avatar'] ?>" alt="">
+        <div>
+            <div class="profil__image">
+                <img src="<?php echo $_SESSION['Avatar'] ?>" alt="">
+            </div>
+            <div class="profil__sectionTitle profil__sectionTitle--name">
+                    <span><%=  grupa.FirstName %></span>
+                
+                    <span><%=  grupa.SecondName %></span>
+               </div>
+        
         </div>
+        
+        <div>
             <div class="form profil__data">
                 <div class="profil__sectionTitle">Informacje o tobie:</div>
+                
                 <div class="form__row">
-                    <label class="form__label">Imię: </label>
-                    <span><%=  grupa.FirstName %></span>
-                </div>
-                <div class="form__row">
-                    <label class="form__label">Nazwisko: </label>
-                    <span><%=  grupa.SecondName %></span>
+                    <label class="form__label">Płeć: </label>
+                    <span><%=  grupa.Sex %></span>
                 </div>
                 <div class="form__row">
                     <label class="form__label">Email: </label>
                     <span><%=  grupa.Email %></span>
+                </div>
+                <div class="form__row">
+                    <label class="form__label">Zawód: </label>
+                    <span><%=  grupa.Job %></span>
                 </div>
                 <div class="form__row">
                     <label class="form__label">Miasto: </label>
@@ -28,6 +39,13 @@
                     <label class="form__label">Data rejestracji: </label>
                     <span><%=  grupa.RegisterDate %></span>
                 </div>
+            </div>
+            <div class="form profil__data">
+                <div class="profil__sectionTitle">Twoje statystyki:</div>
+                <div style="width:250px; height:250px; margin: 0 auto;">
+                    <canvas id="profilTaskChart"></canvas>
+                </div>
+            </div>
             </div>
         </div>
     <% } %>

@@ -33,3 +33,22 @@ function editTask($id, $title, $status, $groups){
     $userID = getLoginId();
     return dbQuery("UPDATE task_list SET Title='$title', Status='$status', Groups='$groups' WHERE id = '$id' AND User_id = '$userID'");
 }
+
+function getTasksStatistic(){
+    $userID = getLoginId();
+    $taskSummary = dbQuery("SELECT COUNT(*) AS 'TaskSummary' FROM `task_list` WHERE `User_id` = '$userID'");
+    $taskSummary =  $taskSummary[0]['TaskSummary'];
+    $taskDone = dbQuery("SELECT COUNT(*) AS 'taskDone' FROM `task_list` WHERE `User_id` = '$userID' AND (`Status` = 1 OR `Status` = 3)");
+    $taskDone = $taskDone[0]['taskDone'];
+    $taskUndone = $taskSummary - $taskDone;
+
+    $procentage = getTaskPercentage($taskSummary, $taskDone, $taskUndone);
+    return ['taskSummary' => $taskSummary, 'taskDone' => $taskDone, 'taskUndone' => $taskUndone, 'procentage' => $procentage];
+}
+
+function getTaskPercentage($taskSummary, $taskDone, $taskUndone){
+    $done = round($taskDone / $taskSummary * 100, 2) . '%';
+    $undone = round($taskUndone / $taskSummary * 100, 2) . '%';
+
+    return [ 'done' => $done, 'undone' => $undone];
+}
