@@ -11,7 +11,7 @@
     <script src="templates/js/ajax.js"></script>
 
 
-    <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData"] ?>
+    <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData", "editUserData"] ?>
 
     <?php foreach ($ejsTemplates as $templateName) : ?>
         <noscript id="<?php echo $templateName ?>">

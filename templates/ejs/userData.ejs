@@ -17,7 +17,8 @@
         
         <div>
             <div class="form profil__data">
-                <div class="profil__sectionTitle">Informacje o tobie:</div>
+                <div class="profil__sectionTitle">Informacje o tobie: <span>   <a title="Edytuj swoje dane" href="javascript:"><i onclick="editUserData('<%= grupa.FirstName %>','<%= grupa.SecondName %>', <%= grupa.Sex %>, '<%= grupa.City %>', '<%= grupa.Job %>');" class="mdi mdi-pencil"></i></a>
+            </span></div>
                 
                 <div class="form__row">
                     <label class="form__label">Płeć: </label>

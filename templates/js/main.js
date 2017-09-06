@@ -121,6 +121,17 @@ function submitAddTask(form) {
     }, postData)
 }
 
+
+
+function showNewTask() {
+
+    openModal('addNewTask', function (status, modal) {
+        submitAddTask(modal);
+    }, 'Dodaj nowe zadanie!');
+}
+
+
+
 function removeTask(id, title) {
     openModal('modalConfirm', function (data) {
 
@@ -133,13 +144,6 @@ function removeTask(id, title) {
 
         console.log(data);
     }, "Czy na pewno chcesz usunąć to zadanie o nazwie: <br/> " + title + "?");
-}
-
-function showNewTask() {
-
-    openModal('addNewTask', function (status, modal) {
-        submitAddTask(modal);
-    }, 'Dodaj nowe zadanie!');
 }
 
 function editTask(id, title, status, groups) {
@@ -170,5 +174,41 @@ function editTask(id, title, status, groups) {
             }
         }, postData + "&id=" + id)
     });
+
+}
+
+
+function editUserData(FirstName,SecondName,Sex,City,Job) {
+
+    var modalTemplate = document.getElementById('modalTemplate').innerText;
+        var contentTemplate = document.getElementById('editUserData').innerText;
+        var content = ejs.render(contentTemplate, {
+        FirstName : FirstName,
+        SecondName : SecondName,
+        SexValue : Sex,
+        City : City,
+        Job : Job
+    })
+
+    var elem = document.createElement('div');
+    elem.innerHTML = ejs.render(modalTemplate, {
+        title: "Czy na pewno chcesz swoje dane?",
+        content: content
+    });
+    var modal = elem.querySelector('.modal');
+    document.body.appendChild(modal);
+
+    modalOperationsOnClick(modal, function (data) {
+        var postData = convertFormToPostData(modal);
+        ajax('editUserData', function (ajaxData) {
+
+            if (ajaxData['status'] === 'ok') {
+                showMessage("Twoje dane zostały zmienione");
+                showUserData();
+            }
+        }, postData)
+    });
+
+    console.log(FirstName, SecondName, Sex, City, Job);
 
 }

@@ -1,0 +1,26 @@
+<form class=" user__edit form" onsubmit="return false;">
+        
+        <div class="form__row">
+            <label class="form__label">Imię: </label>
+            <input class="form__input" type="text" name="FirstName" value="<%= FirstName %>">
+        </div>
+        <div class="form__row">
+            <label class="form__label">Nazwisko: </label>
+            <input class="form__input" type="text" name="SecondName" value="<%= SecondName %>">
+        </div>
+        <div class="form__row  form__row--radio">
+            <label class="form__label">Płeć: </label>
+            <input type="radio" name="Sex" value="1" <%= SexValue===1 ? "checked" : '' %> id="human-male"> <label for="human-male"><i style="color:blue;" class="mdi mdi-human-male"></i></label>
+            <input type="radio" name="Sex" value="2" <%= SexValue===2 ? "checked" : '' %> id="human-female"> <label for="human-female"><i style="color:pink;" class="mdi mdi-human-female"></i></label>
+        </div>
+        <div class="form__row">
+            <label class="form__label">Miasto: </label>
+            <input class="form__input" type="text" name="City" value="<%= City %>">
+        </div>
+        <div class="form__row">
+            <label class="form__label">Zawód: </label>
+            <input class="form__input" type="text" name="Job" value="<%= Job %>">
+        </div>
+               
+    <button class="button button--succes" data-callback="ok" type="button">OK</button> <button class="button button--failure" data-callback="cancel" type="button">Anuluj</button>
+</form>
