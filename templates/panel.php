@@ -22,10 +22,27 @@
 
 </head>
 <body>
-    <?php include 'templates/subpages/' . $htmlTemplate . '.html'?>
-
-    <div class="message">
-        <i style="font-size:30px; "class="mdi mdi-alert-outline"></i>
+    <?php include 'templates/elements/staticElements.html'; ?>
+    <div class="layoutPanel">
+        <aside class="layoutPanel__aside aside">
+           <a class="aside__item" href="index.php">
+               <span class="aside__icon"><i class="mdi mdi-home"></i></span> <span class="aside__name">Strona główna</span>
+           </a>
+           <a class="aside__item" href="index.php?page=UserData">
+               <span class="aside__icon"><i class="mdi mdi-account"></i></span> <span class="aside__name">Profil użytkownika</span>
+           </a>
+           <a class="aside__item" href="index.php?page=tasks">
+               <span class="aside__icon"><i class="mdi mdi-format-list-checks"></i></span> <span class="aside__name">Lista zadań</span>
+           </a>
+        </aside>
+        <div class="layoutPanel__content">
+            <div class="layoutPanel__container">
+                <?php include 'templates/subpages/' . $htmlTemplate . '.html'?>
+                <div class="message">
+                    <i style="font-size:30px; "class="mdi mdi-alert-outline"></i>
+                </div> 
+            </div>  
+        </div>
     </div>
 </body>
 </html>
