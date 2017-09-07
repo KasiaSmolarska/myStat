@@ -1,4 +1,4 @@
-$primaryColor:#21b80d;
+$primaryColor:#66bb6a;
 $primaryShadow: 0px 1px 3px.95px rgba(0, 0, 0, 0.3);
 $tabsActiveColor: #f4f4f4;
 
@@ -386,4 +386,10 @@ a{
         .show{
         visibility: visible;
         opacity: 1;
+    }
+
+    .aside{
+        min-width: 48px;
+        position: fixed;
+        height: 100vh;
     }
