@@ -16,7 +16,11 @@ if (count($_GET) == 0 ) {
 } else if (isset($_GET['page'])) {
    
    header('Content-Type: text/html; charset=utf-8');
-   if (getLoginId() === -1 and $_GET['page'] !== 'register') {
+   if (!file_exists('templates/subpages/' . $_GET['page'] . '.html')) {
+       $htmlTemplate = 'error404';
+     /*  echo '{"error" : "wskazana strona nie istnieje!"}';*/
+   }
+   else if (getLoginId() === -1 and $_GET['page'] !== 'register') {
        $htmlTemplate = 'login';
    } else{
         $htmlTemplate = $_GET['page'];
