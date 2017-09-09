@@ -1,4 +1,4 @@
-function taskTileStats() {
+function showTileTaskStats() {
     ajax('getProfilStats', function (data) {
         console.log(data);
         document.getElementById('taskDoneTile').innerText = data.taskSummary;
@@ -7,5 +7,36 @@ function taskTileStats() {
 }
 
 window.addEventListener('load', function(){
-    taskTileStats();
+    showTileTaskStats();
+    reloadTasks();
+    showTileAddTask();
 })
+
+//nadpisanie funkcji reloadTask na stronę "Start"
+function reloadTasks() {
+    ajax('getFiveLastTasks', function (tasks) {
+        var div = document.getElementById('tileTasks');
+        var taskTemplate = document.getElementById('taskTile').innerText;
+        div.innerHTML = ejs.render(taskTemplate, { data: tasks });
+        createTabTask(div);
+        showTileTaskStats();
+    });
+}
+
+function showTileAddTask() {
+    var div = document.getElementById('tileAddNewTask');
+    var addNewTask = document.getElementById('addNewTask').innerText;
+    div.innerHTML = ejs.render(addNewTask, {});
+
+    document.getElementById('submitDataCallback').addEventListener('click', function () {
+        ajax('addTask', function (data) {
+            var inputs = div.querySelectorAll('input[name]');
+            for(var i = 0; i < inputs.length; i++){
+                var input = inputs[i];
+                input.value = '';
+            }
+            reloadTasks();
+        },convertFormToPostData(div))
+    })
+
+}

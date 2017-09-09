@@ -19,6 +19,7 @@ a{
     background: #fff;
     box-shadow:$primaryShadow;
     margin-bottom: 40px;
+    border-radius: 5px;
 
     &__container{
         width: 100%;
@@ -62,7 +63,6 @@ a{
     }
     
     &__status{
-        padding: 0px 20px;
         font-size: 20px;
         line-height: 15px;
         position: relative;
@@ -95,6 +95,13 @@ a{
         a{
             color: $primaryColor;
         }
+    }
+
+    &__data--tile{
+        padding: 5px 0;
+        color: #aaa;
+        font-style: italic;
+        font-size: 14px;
     }
 }
 
@@ -447,6 +454,7 @@ padding-top: 30px;
     box-shadow: $primaryShadow;
     padding: 15px;
     border-radius: 5px;
+    margin-bottom: 20px;
 
     &--statistic{
         border-left:3px solid dodgerblue;

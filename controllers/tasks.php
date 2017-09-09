@@ -1,7 +1,7 @@
 <?php
 
 function getTask(){
-    return dbQuery("SELECT * FROM task_list WHERE User_id = '" . getLoginId() . "' ORDER BY Date ASC");
+    return dbQuery("SELECT * FROM task_list WHERE User_id = '" . getLoginId() . "' ORDER BY Date DESC");
 }
 
 function addTask($title,$status,$group){
@@ -51,4 +51,8 @@ function getTaskPercentage($taskSummary, $taskDone, $taskUndone){
     $undone = round($taskUndone / $taskSummary * 100, 2) . '%';
 
     return [ 'done' => $done, 'undone' => $undone];
+}
+
+function getFiveLastTasksByGroup($groupName){
+    return dbQuery("SELECT * FROM task_list WHERE User_id = '" . getLoginId() . "' and Groups = '". $groupName . "' ORDER BY Date DESC LIMIT 5");
 }

@@ -17,15 +17,12 @@
 
                 <tr class="task__element" data-group="<%= grupa[i].Groups %>">
                     <td>
-                    <span class="checkbox">
-                        <input type="checkbox" id="task<%= i %>">
-                        <label for="task<%= i %>"></label>
-                    </span>
-                    </td>
-                    <td style="max-width:626px;">
                 <span class="task__title">
                         <%=  grupa[i].Title %>
                 </span>
+                <div class="task__data task__data--tile">
+                 <i class="mdi mdi-clock"></i>   <%= grupa[i].Date %>
+                </div>
                 </td>
                 <td>
                 <span >
@@ -36,11 +33,7 @@
                     </span>
                 </span>
                 </td>
-                <td>
-                <span class="task__data">
-                    <%= grupa[i].Date %>
-                </span>
-                </td>
+              
                 <td class="task__edit">
                     <a title="Edytuj zadanie" href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>', <%= grupa[i].Status %>, '<%= grupa[i].Groups %>');" class="mdi mdi-pencil"></i></a>
                 </td>
