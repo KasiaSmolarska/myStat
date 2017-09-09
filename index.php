@@ -8,7 +8,7 @@ if (count($_GET) == 0 ) {
    if (getLoginId() === -1) {
        $htmlTemplate = 'login';
    } else {
-      $htmlTemplate = 'tasks';
+      $htmlTemplate = 'start';
    }
    include 'templates/templates.php';
    //include 'templates/index.html';
@@ -18,7 +18,6 @@ if (count($_GET) == 0 ) {
    header('Content-Type: text/html; charset=utf-8');
    if (!file_exists('templates/subpages/' . $_GET['page'] . '.html')) {
        $htmlTemplate = 'error404';
-     /*  echo '{"error" : "wskazana strona nie istnieje!"}';*/
    }
    else if (getLoginId() === -1 and $_GET['page'] !== 'register') {
        $htmlTemplate = 'login';
