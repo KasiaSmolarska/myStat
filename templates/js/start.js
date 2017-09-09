@@ -1,12 +1,11 @@
 function showTileTaskStats() {
     ajax('getProfilStats', function (data) {
-        console.log(data);
         document.getElementById('taskDoneTile').innerText = data.taskSummary;
         document.getElementById('taskUndoneTile').innerText = data.taskUndone;
     })
 }
 
-window.addEventListener('load', function(){
+window.addEventListener('load', function () {
     showTileTaskStats();
     reloadTasks();
     showTileAddTask();
@@ -30,13 +29,21 @@ function showTileAddTask() {
 
     document.getElementById('submitDataCallback').addEventListener('click', function () {
         ajax('addTask', function (data) {
+            if (data['Status'] !== 'OK') {
+                message.show(data['Description']);
+                return;
+            }
+
+            message.show(data['Description']);
             var inputs = div.querySelectorAll('input[name]');
-            for(var i = 0; i < inputs.length; i++){
+
+            for (var i = 0; i < inputs.length; i++) {
                 var input = inputs[i];
                 input.value = '';
             }
+
             reloadTasks();
-        },convertFormToPostData(div))
+        }, convertFormToPostData(div))
     })
 
 }

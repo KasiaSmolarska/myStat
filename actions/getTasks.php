@@ -1,7 +1,7 @@
 <?php
 
 $tasks = getTask();
-$mappedTasks = [];
+/* $mappedTasks = [];
 
 foreach ($tasks as $task) {
     $currentGroup = $task['Groups'];
@@ -10,8 +10,8 @@ foreach ($tasks as $task) {
     }
     $mappedTasks[$currentGroup][] = $task;
 }
+*/
 
 
 
-
-echo json_encode($mappedTasks);
+echo json_encode($tasks);

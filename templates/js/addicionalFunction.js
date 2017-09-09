@@ -70,12 +70,12 @@ function sendRegisterForm(postdata) {
     ajax('register', function (ajaxData) {
         console.log(ajaxData);
         if (ajaxData['Status'] !== 'OK') {
-            showMessage(ajaxData['Description']);
+            message.show(ajaxData['Description']);
             return;
         }
         else {
             window.location.search = '';
-            showMessage(ajaxData['Description']);
+            message.show(ajaxData['Description']);
         }
 
     }, postdata)
@@ -97,26 +97,13 @@ function accountLogin(postdata) {
     }
     ajax('login', function (ajaxData) {
         if (ajaxData['Status'] !== 'OK') {
-            showMessage(ajaxData['Description']);
+            message.show(ajaxData['Description']);
             return;
         }
         window.location.reload();
     }, postdata)
 }
 
-function showMessage(description) {
-
-    var message = document.querySelector('.message');
-    message.classList.add('message__show');
-    var messageContainer = document.createElement('div');
-    messageContainer.innerText = description;
-    message.appendChild(messageContainer);
-
-    setTimeout(function () {
-        message.classList.remove('message__show');
-        messageContainer.remove();
-    }, 5000);
-}
 
 /**
  *  Funkcja pozwala na stworzenie wysuwanego okienka np. menu

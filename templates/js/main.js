@@ -112,11 +112,11 @@ function submitAddTask(form) {
 
     ajax('addTask', function (ajaxData) {
         if (ajaxData['Status'] !== 'OK') {
-            showMessage(ajaxData['Description']);
+            message.show(ajaxData['Description']);
             return;
         }
 
-        showMessage(ajaxData['Description']);
+        message.show(ajaxData['Description']);
         reloadTasks();
     }, postData)
 }
@@ -169,7 +169,7 @@ function editTask(id, title, status, groups) {
         ajax('editTask', function (ajaxData) {
 
             if (ajaxData['status'] === 'ok') {
-                showMessage("Zadanie: '" + title + "' zostało zmienione");
+                message.show("Zadanie: '" + title + "' zostało zmienione");
                 reloadTasks();
             }
         }, postData + "&id=" + id)
@@ -203,7 +203,7 @@ function editUserData(FirstName,SecondName,Sex,City,Job) {
         ajax('editUserData', function (ajaxData) {
 
             if (ajaxData['status'] === 'ok') {
-                showMessage("Twoje dane zostały zmienione");
+                message.show("Twoje dane zostały zmienione");
                 showUserData();
             }
         }, postData)

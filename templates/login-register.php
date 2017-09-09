@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="templates/css/index.css">
     <script src="templates/js/ejs.min.js"></script>
     <script src="templates/js/ajax.js"></script>
+    <script src="templates/js/message.js"></script>
+
 
 
     <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData", "editUserData"] ?>
