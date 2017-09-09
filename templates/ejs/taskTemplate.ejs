@@ -1,55 +1,48 @@
 <div class="task">
-    <div class="task__headers">
-        <% for (var key in data) { %>
-            <% if (data.hasOwnProperty(key)) { %>
-                <div class="task__Header"  data-group="<%= key %>">  <%= key %></div>
-            <% } %>
-        <% } %>
-
-    </div>
+ 
     <table class="task__container">
     <% for (var key in data) { %>
         <% if (data.hasOwnProperty(key)) { %>
 
             <% var grupa = data[key]; %>
 
-            <% for (var i = 0; i < grupa.length; i++) { %>
+          
 
-                <tr class="task__element" data-group="<%= grupa[i].Groups %>">
+                <tr class="task__element" >
                     <td>
                     <span class="checkbox">
-                        <input type="checkbox" id="task<%= i %>">
-                        <label for="task<%= i %>"></label>
+                        <input type="checkbox" id="task<%= grupa.id %>">
+                        <label for="task<%= grupa.id %>"></label>
                     </span>
                     </td>
                     <td style="max-width:626px;">
                 <span class="task__title">
-                        <%=  grupa[i].Title %>
+                        <%=  grupa.Title %>
                 </span>
                 </td>
                 <td>
                 <span >
-                    <span class="task__status  <%= grupa[i].Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
+                    <span class="task__status  <%= grupa.Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
                     <% var colors = ['red', 'green', '#f0cf02', 'brown']; %>
                     <% var icons = ['emoticon-sad', 'emoticon-cool', 'emoticon-neutral', 'emoticon-poop' ];%>
-                        <i style="color:<%= colors[grupa[i].Status]%>" class="mdi mdi-<%= icons[grupa[i].Status] %> "></i>
+                        <i style="color:<%= colors[grupa.Status]%>" class="mdi mdi-<%= icons[grupa.Status] %> "></i>
                     </span>
                 </span>
                 </td>
                 <td>
                 <span class="task__data">
-                    <%= grupa[i].Date %>
+                    <%= grupa.Date %>
                 </span>
                 </td>
                 <td class="task__edit">
-                    <a title="Edytuj zadanie" href="javascript:"><i onclick="editTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>', <%= grupa[i].Status %>, '<%= grupa[i].Groups %>');" class="mdi mdi-pencil"></i></a>
+                    <a title="Edytuj zadanie" href="javascript:"><i onclick="editTask(<%= grupa.ID %>,'<%= grupa.Title %>', <%= grupa.Status %>, '<%= grupa.Groups %>');" class="mdi mdi-pencil"></i></a>
                 </td>
                 <td class="task__delete">
-                    <a title="Usuń zadanie" href="javascript:"><i onclick="removeTask(<%= grupa[i].ID %>,'<%= grupa[i].Title %>');" class="mdi mdi-delete"></i></a>
+                    <a title="Usuń zadanie" href="javascript:"><i onclick="removeTask(<%= grupa.ID %>,'<%= grupa.Title %>');" class="mdi mdi-delete"></i></a>
                 </td>
                 </tr>
 
-            <% } %>
+       
         <% } %>
     <% } %>
     </table>

@@ -98,6 +98,9 @@ function createTabTask(element) {
             }
         }
         for (i = 0; i < tasks.length; i++) {
+            if (tasks[i].dataset.group === undefined) {
+                break;
+            }
             if (tasks[i].dataset.group !== groupName) {
                 tasks[i].style.display = "none";
             } else {
