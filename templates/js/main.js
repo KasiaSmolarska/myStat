@@ -50,7 +50,7 @@ function showUserData() {
                         display: true,
                         labels: {
                             fontColor: 'rgb(0, 0, 0)',
-                            fontSize : 13
+                            fontSize: 13
                         }
                     }
                 }
@@ -119,7 +119,7 @@ function submitAddTask(form) {
             return;
         }
 
-        message.show(ajaxData['Description']);
+        message.show(ajaxData['Description'], "warning");
         reloadTasks();
     }, postData)
 }
@@ -168,6 +168,10 @@ function editTask(id, title, status, groups) {
     document.body.appendChild(modal);
 
     modalOperationsOnClick(modal, function (data) {
+          if(data !== "ok"){
+            message.show('Nie zmieniłeś treści zadania!', "warning");
+            return;
+        }
         var postData = convertFormToPostData(modal);
         ajax('editTask', function (ajaxData) {
 
@@ -181,16 +185,16 @@ function editTask(id, title, status, groups) {
 }
 
 
-function editUserData(FirstName,SecondName,Sex,City,Job) {
+function editUserData(FirstName, SecondName, Sex, City, Job) {
 
     var modalTemplate = document.getElementById('modalTemplate').innerText;
-        var contentTemplate = document.getElementById('editUserData').innerText;
-        var content = ejs.render(contentTemplate, {
-        FirstName : FirstName,
-        SecondName : SecondName,
-        SexValue : Sex,
-        City : City,
-        Job : Job
+    var contentTemplate = document.getElementById('editUserData').innerText;
+    var content = ejs.render(contentTemplate, {
+        FirstName: FirstName,
+        SecondName: SecondName,
+        SexValue: Sex,
+        City: City,
+        Job: Job
     })
 
     var elem = document.createElement('div');
@@ -202,14 +206,19 @@ function editUserData(FirstName,SecondName,Sex,City,Job) {
     document.body.appendChild(modal);
 
     modalOperationsOnClick(modal, function (data) {
+        if(data !== "ok"){
+            message.show('Nie zmieniłeś swoich danych!', "warning");
+            return;
+        }
+
         var postData = convertFormToPostData(modal);
         ajax('editUserData', function (ajaxData) {
 
-            if (ajaxData['status'] === 'ok') {
-                message.show("Twoje dane zostały zmienione");
-                showUserData();
-            }
-        }, postData)
+                if (ajaxData['status'] === 'ok') {
+                    message.show("Twoje dane zostały zmienione");
+                    showUserData();
+                }
+            }, postData)
     });
 
     console.log(FirstName, SecondName, Sex, City, Job);

@@ -75,7 +75,7 @@ function sendRegisterForm(postdata) {
         }
         else {
             window.location.search = '';
-            message.show(ajaxData['Description']);
+            message.show(ajaxData['Description'], "warning");
         }
 
     }, postdata)

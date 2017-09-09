@@ -30,7 +30,7 @@ function showTileAddTask() {
     document.getElementById('submitDataCallback').addEventListener('click', function () {
         ajax('addTask', function (data) {
             if (data['Status'] !== 'OK') {
-                message.show(data['Description']);
+                message.show(data['Description'], "warning");
                 return;
             }
 
