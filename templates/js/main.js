@@ -3,12 +3,43 @@
  *  do poprawnego działania wymaga dowolnego elementu z id 'tasklist' 
  */
 function reloadTasks() {
+    var sort = localStorage.getItem('sortBy') || 'ID';
+    var sortDirection = localStorage.getItem('sortDir') || 'ASC';
+
     ajax('getTasks', function (tasks) {
         var div = document.getElementById('tasksList');
         var taskTemplate = document.getElementById('taskTemplate').innerText;
-        div.innerHTML = ejs.render(taskTemplate, { data: tasks });
-        createTabTask(div);
-    });
+        div.innerHTML = ejs.render(taskTemplate, { 
+            data: tasks, 
+            sort : {
+                'name' : sort,
+                'dir' : sortDirection
+            } });
+        var sortableHeaders = div.querySelectorAll("[data-sort]");
+        for(var i = 0; i < sortableHeaders.length; i++){
+            var sortableHeader = sortableHeaders[i];
+
+            sortableHeader.addEventListener('click', function () {
+
+                if( sort === this.dataset.sort){
+                    if (sortDirection === 'ASC') {
+                        localStorage.setItem('sortDir', 'DESC');
+                    } else{
+                        localStorage.setItem('sortDir', 'ASC');
+                    }
+                } else{
+                    localStorage.setItem('sortDir', 'ASC');
+                }
+
+                localStorage.setItem('sortBy', this.dataset.sort);
+                reloadTasks();
+
+
+            })
+
+        }
+       // createTabTask(div);
+    }, "sort=" + sort + "&sortDir=" + sortDirection);
 }
 
 window.addEventListener('load', function () {
@@ -115,11 +146,11 @@ function submitAddTask(form) {
 
     ajax('addTask', function (ajaxData) {
         if (ajaxData['Status'] !== 'OK') {
-            message.show(ajaxData['Description']);
+            message.show(ajaxData['Description'], "warning");
             return;
         }
 
-        message.show(ajaxData['Description'], "warning");
+        message.show(ajaxData['Description']);
         reloadTasks();
     }, postData)
 }
@@ -129,6 +160,10 @@ function submitAddTask(form) {
 function showNewTask() {
 
     openModal('addNewTask', function (status, modal) {
+        if(status !== "ok"){
+            message.show("zadanie nie zostało dodane!", "warning");
+            return;
+        }
         submitAddTask(modal);
     }, 'Dodaj nowe zadanie!');
 }

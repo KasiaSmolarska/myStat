@@ -21,6 +21,13 @@ a{
     margin-bottom: 40px;
     border-radius: 5px;
 
+    &__head{
+
+        td{
+            border:7px solid #fff;
+        }
+    }
+
     &__container{
         width: 100%;
         padding: 20px;

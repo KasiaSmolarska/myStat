@@ -1,12 +1,19 @@
 <div class="task">
  
     <table class="task__container">
+    <tr class="task__head">
+        <td><input type="checkbox" id="checkboxAll"></td>
+        <td data-sort="Title">Zadanie:</td>
+        <td data-sort="Status">Status: </td>
+        <td data-sort="Groups">Grupa: </td>
+        <td data-sort="Date">Data: </td>
+        <td colspan="2">Akcje: </td>
+    </tr>
     <% for (var key in data) { %>
         <% if (data.hasOwnProperty(key)) { %>
 
             <% var grupa = data[key]; %>
-
-          
+         
 
                 <tr class="task__element" >
                     <td>
@@ -28,6 +35,11 @@
                         <i style="color:<%= colors[grupa.Status]%>" class="mdi mdi-<%= icons[grupa.Status] %> "></i>
                     </span>
                 </span>
+                </td>
+                <td>
+                    <span class="task__group">
+                    <%= grupa.Groups %>
+                    </span>
                 </td>
                 <td>
                 <span class="task__data">

@@ -1,6 +1,6 @@
 <?php
 
-function getTask(){
+function getTask($sort, $sortDir){
     return dbQuery("SELECT * FROM task_list WHERE User_id = '" . getLoginId() . "' ORDER BY Date DESC");
 }
 

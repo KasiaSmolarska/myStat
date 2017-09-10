@@ -1,6 +1,6 @@
 <?php
 
-$tasks = getTask();
+$tasks = getTask($_POST['sort'], $_POST['sortDir']);
 /* $mappedTasks = [];
 
 foreach ($tasks as $task) {
