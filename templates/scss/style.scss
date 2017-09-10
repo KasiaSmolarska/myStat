@@ -22,9 +22,15 @@ a{
     border-radius: 5px;
 
     &__head{
+        border-bottom: 1px solid #f4f4f4;
 
         td{
-            border:7px solid #fff;
+            
+            cursor: pointer;
+            padding: 15px 5px;
+            font-size: 18px;
+            background: #301a8b;
+            color: #fff;
         }
     }
 
@@ -33,9 +39,21 @@ a{
         padding: 20px;
     }
 
-    &__element td {
-        border: 7px solid #fff;
+
+
+    &__element{
+
+        td {
+            padding: 10px 5px;
+        }
+
+        &:nth-child(odd) td{
+            background: #f9f9f9;
+        }
+
+
     }
+        
 
     &__Header{
         color: #000;

@@ -1,12 +1,14 @@
 <div class="task">
- 
-    <table class="task__container">
+
+<%  console.log(sort) %>
+
+    <table class="task__container" style="border-collapse: collapse; width: 100%;">
     <tr class="task__head">
         <td><input type="checkbox" id="checkboxAll"></td>
-        <td data-sort="Title">Zadanie:</td>
-        <td data-sort="Status">Status: </td>
-        <td data-sort="Groups">Grupa: </td>
-        <td data-sort="Date">Data: </td>
+        <td onclick="console.log(this.dataset.sort)" data-sort="Title">Zadanie: <i class="mdi mdi-arrow-<%= (sort.name == 'Title') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td data-sort="Status">Status: <i class="mdi mdi-arrow-<%= (sort.name == 'Status') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td data-sort="Groups">Grupa: <i class="mdi mdi-arrow-<%= (sort.name == 'Groups') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td data-sort="Date">Data: <i class="mdi mdi-arrow-<%= (sort.name == 'Date') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
         <td colspan="2">Akcje: </td>
     </tr>
     <% for (var key in data) { %>
@@ -22,12 +24,12 @@
                         <label for="task<%= grupa.id %>"></label>
                     </span>
                     </td>
-                    <td style="max-width:626px;">
+                    <td style="max-width:556px;">
                 <span class="task__title">
                         <%=  grupa.Title %>
                 </span>
                 </td>
-                <td>
+                <td style="text-align:center;">
                 <span >
                     <span class="task__status  <%= grupa.Status == 1 ? "task__status--done" : "task__status--undone"  %>" > 
                     <% var colors = ['red', 'green', '#f0cf02', 'brown']; %>

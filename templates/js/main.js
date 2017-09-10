@@ -20,18 +20,22 @@ function reloadTasks() {
             var sortableHeader = sortableHeaders[i];
 
             sortableHeader.addEventListener('click', function () {
-
+             
                 if( sort === this.dataset.sort){
                     if (sortDirection === 'ASC') {
+                       
                         localStorage.setItem('sortDir', 'DESC');
                     } else{
+                       
                         localStorage.setItem('sortDir', 'ASC');
                     }
                 } else{
+                     
                     localStorage.setItem('sortDir', 'ASC');
                 }
 
                 localStorage.setItem('sortBy', this.dataset.sort);
+               
                 reloadTasks();
 
 
