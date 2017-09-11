@@ -1,6 +1,17 @@
 <script src="templates/js/main.js"></script>
 <script src="templates/js/addicionalFunction.js"></script>
 
+<div class="task__filter filter">
+    <div class="row">
+        <div class="col-xs-11 filter__searcher">
+            <input class="task__input " type="text" name="searcher" placeholder="Szukaj" title="">
+           <span class="filter__magnify"><i  class="mdi mdi-magnify"></i></span> 
+        </div>
+        <div class="col-xs-1 " style="text-align:right;">
+           <div class="filter__icon"><i class="mdi mdi-filter"></i></div> 
+        </div>
+    </div>
+</div>
 <div id="tasksList"> </div>
 <div class="task__newContainer">
     <button id="newTaskAction" onclick="showNewTask();" class="button button--succes button--newTask" data-callback="ok" type="button">Dodaj nowe zadanie!</button>

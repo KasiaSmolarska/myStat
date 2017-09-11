@@ -5,10 +5,10 @@
     <table class="task__container" style="border-collapse: collapse; width: 100%;">
     <tr class="task__head">
         <td><input type="checkbox" id="checkboxAll"></td>
-        <td onclick="console.log(this.dataset.sort)" data-sort="Title">Zadanie: <i class="mdi mdi-arrow-<%= (sort.name == 'Title') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
-        <td data-sort="Status">Status: <i class="mdi mdi-arrow-<%= (sort.name == 'Status') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
-        <td data-sort="Groups">Grupa: <i class="mdi mdi-arrow-<%= (sort.name == 'Groups') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
-        <td data-sort="Date">Data: <i class="mdi mdi-arrow-<%= (sort.name == 'Date') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td onclick="console.log(this.dataset.sort)" data-sort="Title">Zadanie: <i class="mdi mdi-menu-<%= (sort.name == 'Title') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td data-sort="Status">Status: <i class="mdi mdi-menu-<%= (sort.name == 'Status') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td data-sort="Groups">Grupa: <i class="mdi mdi-menu-<%= (sort.name == 'Groups') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
+        <td data-sort="Date">Data: <i class="mdi mdi-menu-<%= (sort.name == 'Date') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>
         <td colspan="2">Akcje: </td>
     </tr>
     <% for (var key in data) { %>

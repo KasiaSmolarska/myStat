@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="theme-color" content="#0296dc">
     <title>Document</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:200,300,300i,400,400i,500,600,700,800&amp;subset=latin-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="templates/css/index.css">
     <script src="templates/js/ejs.min.js"></script>

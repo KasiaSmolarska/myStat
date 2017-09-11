@@ -3,8 +3,9 @@ body{
     width: 100%;
     margin: 0;
     background-color: #edf1f5;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Lato', sans-serif;
     overflow: hidden;
+    font-size: 14px;
 }
 
 a{
@@ -27,10 +28,19 @@ a{
         td{
             
             cursor: pointer;
-            padding: 15px 5px;
-            font-size: 18px;
-            background: #301a8b;
-            color: #fff;
+            padding: 15px 7px;
+            font-size: 13px;
+            font-weight: 700;
+            background: #fafafa;
+            color: #000;
+            border-left: 1px solid #efefef;
+            text-transform: uppercase;
+            line-height: 14px;
+
+            .mdi-menu-down, .mdi-menu-up{
+                font-size: 20px;
+                line-height: 14px;
+            }
         }
     }
 
@@ -38,17 +48,45 @@ a{
         width: 100%;
         padding: 20px;
     }
+    
+    &__input{
+        width:100%;
+        height:37px;
+        border-radius: 5px;
+        border:1px solid #ccc;
+        padding-left: 20px;
+    }
 
+    &--tile{
+        td{
+            padding:10px 12px!important;
+            background: #fff!important;
+            border:none!important;
+            font-size: 15px!important;
+        }
+    }
 
+    &__filter{
+        padding-bottom: 30px;
+    }
 
     &__element{
 
         td {
-            padding: 10px 5px;
+                padding: 20px 7px;
+                font-size: 14px;
+
+                &:first-letter{
+                    text-transform: capitalize;
+                }
+        }
+
+        & td:not(:last-child){
+            border-left: 1px solid #f1f1f1;
         }
 
         &:nth-child(odd) td{
-            background: #f9f9f9;
+            background: #fafafa;
         }
 
 
@@ -529,5 +567,32 @@ padding-top: 30px;
         margin-top:9px;
         padding-top:9px;
         font-size:14px;
+    }
+}
+
+.filter{
+
+    &__icon{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+      
+        height: 37px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+
+    }
+
+    &__searcher{
+        position: relative;
+    }
+
+    &__magnify{
+        position: absolute;
+        top:5px;
+        font-size: 21px;
+        right: 20px;
     }
 }
