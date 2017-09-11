@@ -124,3 +124,11 @@ function showElement(element) {
         }
     }
 }
+
+function menuSlide() {
+    
+   var menu = document.querySelector('aside');
+   
+   menu.classList.toggle('aside__slide');
+  
+}
