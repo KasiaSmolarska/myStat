@@ -34,6 +34,10 @@ function convertFormToPostData(form){
    var addtaskValues = [];
    for (var i = 0; i < inputs.length; i++) {
        var input = inputs[i];
+
+       if (input.type === 'file') {
+           continue;
+       }
        if (input.type == 'radio' && input.checked) {
            addtaskValues.push(input.name + '=' + input.value);
        }
@@ -43,4 +47,25 @@ function convertFormToPostData(form){
       
    }
    return addtaskValues.join('&');
+}
+
+/**
+ * Funkcja uruchamia się po zmianie stanu inputa[file] w celu stworzenia base64 - obrazka.
+ * 
+ * @param {element} fileInput - input typu file
+ * @param {element} hiddenInput - input typu hidden, do którego zapisywane jest Base64
+ */
+function imageHanderOnChange(fileInput, hiddenInput) {
+    //var preview = document.querySelector('img');
+    var file    = fileInput.files[0];
+    var reader  = new FileReader();
+    reader.addEventListener("load", function () {
+        hiddenInput.value = reader.result;
+     // preview.src = reader.result;
+    }, false);
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+   
 }
