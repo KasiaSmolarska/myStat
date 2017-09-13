@@ -1,6 +1,14 @@
 <script src="templates/js/main.js"></script>
 <script src="templates/js/addicionalFunction.js"></script>
 
+<div class="task__newContainer tile">
+        <div class="task__icon"><i style="font-size:22px; "class="mdi mdi-alarm-light"></i></div>   
+        <div class="task__tileTitle">Dodaj nowe zadanie!</div>  
+        <div class="task__buttonContainer">
+            <button id="newTaskAction" onclick="showNewTask();" class="button button--succes button--newTask" data-callback="ok" type="button">Dodaj!</button>           
+        </div>   
+</div>
+
 <div class="task__filter filter">
     <div class="row">
         <div class="col-xs-11 filter__searcher">
@@ -13,6 +21,3 @@
     </div>
 </div>
 <div id="tasksList"> </div>
-<div class="task__newContainer">
-    <button id="newTaskAction" onclick="showNewTask();" class="button button--succes button--newTask" data-callback="ok" type="button">Dodaj nowe zadanie!</button>
-</div>

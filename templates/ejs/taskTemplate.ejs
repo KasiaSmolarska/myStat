@@ -1,8 +1,6 @@
 <div class="task">
 
-<%  console.log(sort) %>
-
-    <table class="task__container" style="border-collapse: collapse; width: 100%;">
+    <table class="task__container" style="border-collapse: collapse; min-width: 700px; ">
     <tr class="task__head">
         <td><input type="checkbox" id="checkboxAll"></td>
         <td onclick="console.log(this.dataset.sort)" data-sort="Title">Zadanie: <i class="mdi mdi-menu-<%= (sort.name == 'Title') ? ((sort.dir == 'ASC')  ? 'up' : 'down') : ''  %>"> </i></td>

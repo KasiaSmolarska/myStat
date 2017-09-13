@@ -1,7 +1,8 @@
 var message = {
     queque: [],
     color: function () {
-        return Math.round(Math.random() * 210);
+        const DARKEN_COLORS = 210;
+        return Math.round(Math.random() * DARKEN_COLORS);
     },
     show: function (description, type) {
         var messageElem = document.querySelector('.message');
