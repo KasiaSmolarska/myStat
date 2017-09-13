@@ -40,8 +40,13 @@
             <div class="layoutPanel__container">
                 <?php include 'templates/subpages/' . $htmlTemplate . '.html'?>
                 <div class="message">
-                    <i style="font-size:30px; "class="mdi mdi-alert-outline"></i>
-                </div> 
+                    <div class="message__content">
+                        <span class="message__close">
+                            <i class="mdi mdi-window-close"></i>
+                        </span>
+                        <div class="message__icon"><i style="font-size:22px; "class="mdi mdi-alarm-light"></i></div>
+                    </div>
+                </div>
             </div>  
         </div>
     </div>

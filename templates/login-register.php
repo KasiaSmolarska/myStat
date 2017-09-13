@@ -27,7 +27,9 @@
     <?php include 'templates/subpages/' . $htmlTemplate . '.html'?>
 
     <div class="message">
-        <i style="font-size:30px; "class="mdi mdi-alert-outline"></i>
+    <div class="message__content">
+        <div class="message__icon"><i style="font-size:22px; "class="mdi mdi-alarm-light"></i></div>
     </div>
+</div>
 </body>
 </html>
