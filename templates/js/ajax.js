@@ -46,6 +46,8 @@ function convertFormToPostData(form){
        }
       
    }
+console.log(addtaskValues);
+
    return addtaskValues.join('&');
 }
 
@@ -56,14 +58,11 @@ function convertFormToPostData(form){
  * @param {element} hiddenInput - input typu hidden, do którego zapisywane jest Base64
  */
 function imageHanderOnChange(fileInput, hiddenInput) {
-    //var preview = document.querySelector('img');
     var file    = fileInput.files[0];
     var reader  = new FileReader();
     reader.addEventListener("load", function () {
         hiddenInput.value = reader.result;
-     // preview.src = reader.result;
     }, false);
-  
     if (file) {
       reader.readAsDataURL(file);
     }

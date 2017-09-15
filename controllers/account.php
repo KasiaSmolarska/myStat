@@ -54,3 +54,26 @@ function editUserData($FirstName, $SecondName, $Sex, $City, $Job){
 
     return dbQuery("UPDATE `users` SET `FirstName`= '$FirstName',`SecondName`= '$SecondName',`Sex`= $Sex,`City`= '$City',`Job`= '$Job' WHERE `ID`=$userId");
 }
+
+function setAvatarPhoto($base64){
+
+    if(file_exists('templates/avatars') === false){
+        mkdir('templates/avatars');
+    }
+
+    $data = $base64;
+    $userId = getLoginId();
+    list($type, $data) = explode(';', $data);
+    list(, $data)      = explode(',', $data);
+    $data = base64_decode($data);
+    list(,$type) = explode('/', $type);
+    $path='templates/avatars/' . $userId . '.' . $type;
+    
+    
+    file_put_contents($path, $data);
+
+    $path = addslashes($path);
+
+    return dbQuery("UPDATE `users` SET Avatar = '$path' WHERE `ID`=$userId" );
+}
+
