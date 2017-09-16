@@ -43,7 +43,7 @@ function reloadTasks() {
 
         }
        // createTabTask(div);
-    }, "sort=" + sort + "&sortDir=" + sortDirection);
+    }, "sort=" + sort + "&sortDir=" + sortDirection + "&" + convertFormToPostData(document.getElementById('filterTasks')));
 }
 
 window.addEventListener('load', function () {

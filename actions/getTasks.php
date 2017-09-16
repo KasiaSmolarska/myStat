@@ -1,6 +1,6 @@
 <?php
 
-$tasks = getTask($_POST['sort'], $_POST['sortDir']);
+$tasks = getTask($_POST['sort'], $_POST['sortDir'], $_POST['filterStatus'], $_POST['filterGroup'], $_POST['filterDateFrom'], $_POST['filterDateTo']);
 /* $mappedTasks = [];
 
 foreach ($tasks as $task) {
@@ -10,6 +10,7 @@ foreach ($tasks as $task) {
     }
     $mappedTasks[$currentGroup][] = $task;
 }
+
 */
 
 

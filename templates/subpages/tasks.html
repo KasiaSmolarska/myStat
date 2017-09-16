@@ -1,22 +1,44 @@
 <script src="templates/js/main.js"></script>
 <script src="templates/js/addicionalFunction.js"></script>
 
-<div class="task__newContainer tile">
-        <div class="task__icon"><i style="font-size:22px; "class="mdi mdi-alarm-light"></i></div>   
-        <div class="task__tileTitle">Dodaj nowe zadanie!</div>  
-        <div class="task__buttonContainer">
-            <button id="newTaskAction" onclick="showNewTask();" class="button button--succes button--newTask" data-callback="ok" type="button">Dodaj!</button>           
-        </div>   
+<div class="task__newContainer tile tile__bg">
+    <div class="task__icon"><i style="font-size:22px; " class="mdi mdi-alarm-light"></i></div>
+    <div class="task__tileTitle">Dodaj nowe zadanie!</div>
+    <div class="task__buttonContainer">
+        <button id="newTaskAction" onclick="showNewTask();" class="button button--succes button--newTask" data-callback="ok" type="button">Dodaj!</button>
+    </div>
 </div>
 
 <div class="task__filter filter">
     <div class="row">
         <div class="col-xs-11 filter__searcher">
             <input class="task__input " type="text" name="searcher" placeholder="Szukaj" title="">
-           <span class="filter__magnify"><i  class="mdi mdi-magnify"></i></span> 
+            <span class="filter__magnify"><i  class="mdi mdi-magnify"></i></span>
         </div>
         <div class="col-xs-1 " style="text-align:right;">
-           <div class="filter__icon"><i class="mdi mdi-filter"></i></div> 
+            <div class="filter__icon"><i class="mdi mdi-filter"></i></div>
+        </div>
+    </div>
+    <div id="filterTasks" class="row" style="height:55px">
+        <div class="col-xs-2"><label for="filterDateFrom">Data od:</label><input  onchange="reloadTasks()" type="date" name="filterDateFrom" id="filterDateFrom"></div>
+        <div class="col-xs-2"><label for="filterDateTo">Data do:</label><input  onchange="reloadTasks()" type="date" name="filterDateTo" id="filterDateTo"></div>
+        <div class="col-xs-2"><label for="filterGroup">Wybierz grupę:</label>
+            <select name="filterGroup" id="filterGroup" onchange="reloadTasks()">
+                <option value="">Nie wybrano</option>
+                <option value="Website">Website</option>
+                <option value="Server">Server</option>
+                <option value="Bugs">Bugs</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="col-xs-2"><label for="filterStatus">Status:</label>
+            <select name="filterStatus" id="filterStatus"  onchange="reloadTasks()">
+                    <option value="">Nie wybrano</option>
+                    <option value="0">Sad</option>
+                    <option value="1">Done</option>
+                    <option value="2">Neutral</option>
+                    <option value="3">Kupa</option>
+                </select>
         </div>
     </div>
 </div>

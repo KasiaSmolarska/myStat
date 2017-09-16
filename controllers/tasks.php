@@ -1,7 +1,29 @@
 <?php
 
-function getTask($sort, $sortDir){
-    return dbQuery("SELECT * FROM task_list WHERE User_id = '" . getLoginId() . "' ORDER BY `$sort` $sortDir");
+function getTask($sort, $sortDir, $status, $group, $dateStart, $dateEnd){
+    
+    $dateStart = str_replace('.', '-', $dateStart);
+    $dateEnd = str_replace('.', '-', $dateEnd);
+    $filter = [];
+    $filter[] = "User_id='" . getLoginId() . "'";
+    if ($status !== '') {
+        $filter[] = 'Status="' . $status . '"';
+       }
+    if ($group !== '') {
+    $filter[]= 'Groups="' . $group . '"';
+    }
+    if ($dateStart !== '') {
+        if ($dateEnd !== '') {
+            $filter[] = 'Date BETWEEN"' . $dateStart . '" AND "'  . $dateEnd . '"';
+        }else{
+            $filter[] = 'Date >"' . $dateStart . '"';
+        }
+    } elseif ($dateEnd !== '') {
+    $filter[] = 'Date <"' . $dateEnd . '"';
+    }
+    $joinFilter = join(' AND ', $filter);
+  
+    return dbQuery("SELECT * FROM task_list WHERE " . $joinFilter . " ORDER BY `$sort` $sortDir");
 }
 
 function addTask($title,$status,$group){
