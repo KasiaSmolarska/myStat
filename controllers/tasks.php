@@ -1,11 +1,14 @@
 <?php
 
-function getTask($sort, $sortDir, $status, $group, $dateStart, $dateEnd){
+function getTask($sort, $sortDir, $status, $group, $dateStart, $dateEnd, $searcher){
     
     $dateStart = str_replace('.', '-', $dateStart);
     $dateEnd = str_replace('.', '-', $dateEnd);
     $filter = [];
     $filter[] = "User_id='" . getLoginId() . "'";
+    if ($searcher !== '') {
+        $filter[] = "Title LIKE '%" . $searcher . "%'";        
+    }
     if ($status !== '') {
         $filter[] = 'Status="' . $status . '"';
        }

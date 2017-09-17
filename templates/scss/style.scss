@@ -775,15 +775,20 @@ a{
 
     &__inputs{
         margin-top: 0px;
-        visibility: hidden;
-        height:0px;
-        transition: .2s visibility, .5s height, .4s margin-top;
+        overflow: hidden;
+        height: 0;
+        transition: .5s height, .4s margin-top;
 
         &--slide{
             margin-top: 30px;
-            height: 55px;
-            visibility: visible;
+            height: auto;
+
         }
+    }
+
+    &__clean{
+        cursor: pointer;
+        margin: 10px 0;
     }
 
     &__icon{

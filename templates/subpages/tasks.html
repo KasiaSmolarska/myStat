@@ -11,16 +11,17 @@
 
 <div class="task__filter filter">
     <div class="row">
-        <div class="col-xs-11 filter__searcher">
-            <input class="task__input " type="text" name="searcher" placeholder="Szukaj" title="">
-            <span class="filter__magnify"><i  class="mdi mdi-magnify"></i></span>
+        <div class="col-xs-8 col-sm-9 col-md-10 col-lg-11 filter__searcher">
+            <input class="task__input " type="text" name="searcher" placeholder="Szukaj" title="" id="taskSearcher">
+            <span class="filter__magnify"><i onclick="reloadTasks()"  class="mdi mdi-magnify"></i></span>
         </div>
-        <div class="col-xs-1 " style="text-align:right;">
+        <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 " style="text-align:right;">
             <div class="filter__icon" onclick="filterSlide()"><i class="mdi mdi-filter"></i></div>
         </div>
     </div>
 
-    <div id="filterTasks" class="row filter__inputs" >
+    <div id="filterTasks" class="filter__inputs" >
+     <div class="row">
         <div class="col-xs-6 col-md-2"><label for="filterDateFrom" class="form__label">Data od:</label><input class="form__input" onchange="reloadTasks()" type="date" name="filterDateFrom" id="filterDateFrom"></div>
         <div class="col-xs-6 col-md-2 "><label class="form__label" for="filterDateTo">Data do:</label><input class="form__input" onchange="reloadTasks()" type="date" name="filterDateTo" id="filterDateTo"></div>
         <div class="col-xs-6 col-md-2"><label class="form__label" for="filterGroup">Wybierz grupę:</label>
@@ -35,14 +36,14 @@
         <div class="col-xs-6 col-md-2"><label class="form__label" for="filterStatus">Status:</label>
             <select  class="form__input" name="filterStatus" id="filterStatus"  onchange="reloadTasks()">
                     <option value="">Nie wybrano</option>
-                    <option value="0">Sad</option>
-                    <option value="1">Done</option>
-                    <option value="2">Neutral</option>
-                    <option value="3">Kupa</option>
+                    <option value="0">Do zrobienia</option>
+                    <option value="1">Zrobione</option>
+                    <option value="2">W trakcie..</option>
+                    <option value="3">Śmieci</option>
                 </select>
         </div>
-        <div class="col-xs-6 col-md-2 filter__clean"><span>Wyczyść filtrowanie</span></div>
-        
+        <div class="col-xs-12 col-md-4 filter__clean"><span onclick="clearFilterData()" class="button button--failure"> <i class="mdi mdi-filter-remove"></i>  Wyczyść filtrowanie</span></div>
+    </div> 
     </div>
 </div>
 <div id="tasksList"> </div>

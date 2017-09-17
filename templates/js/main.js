@@ -43,7 +43,17 @@ function reloadTasks() {
 
         }
        // createTabTask(div);
-    }, "sort=" + sort + "&sortDir=" + sortDirection + "&" + convertFormToPostData(document.getElementById('filterTasks')));
+    }, "sort=" + sort + "&sortDir=" + sortDirection + "&" + convertFormToPostData(document.getElementById('filterTasks')) + "&searcher=" + document.getElementById('taskSearcher').value);
+}
+
+function clearFilterData() {
+    var inputs = document.querySelectorAll('.filter__inputs .form__input');
+
+    for (var i = 0; i < inputs.length; i++) {
+        inputs[i].value = '';
+    }
+
+    reloadTasks();
 }
 
 window.addEventListener('load', function () {
