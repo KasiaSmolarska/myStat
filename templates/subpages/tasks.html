@@ -16,14 +16,15 @@
             <span class="filter__magnify"><i  class="mdi mdi-magnify"></i></span>
         </div>
         <div class="col-xs-1 " style="text-align:right;">
-            <div class="filter__icon"><i class="mdi mdi-filter"></i></div>
+            <div class="filter__icon" onclick="filterSlide()"><i class="mdi mdi-filter"></i></div>
         </div>
     </div>
-    <div id="filterTasks" class="row" style="height:55px">
-        <div class="col-xs-2"><label for="filterDateFrom">Data od:</label><input  onchange="reloadTasks()" type="date" name="filterDateFrom" id="filterDateFrom"></div>
-        <div class="col-xs-2"><label for="filterDateTo">Data do:</label><input  onchange="reloadTasks()" type="date" name="filterDateTo" id="filterDateTo"></div>
-        <div class="col-xs-2"><label for="filterGroup">Wybierz grupę:</label>
-            <select name="filterGroup" id="filterGroup" onchange="reloadTasks()">
+
+    <div id="filterTasks" class="row filter__inputs" >
+        <div class="col-xs-6 col-md-2"><label for="filterDateFrom" class="form__label">Data od:</label><input class="form__input" onchange="reloadTasks()" type="date" name="filterDateFrom" id="filterDateFrom"></div>
+        <div class="col-xs-6 col-md-2 "><label class="form__label" for="filterDateTo">Data do:</label><input class="form__input" onchange="reloadTasks()" type="date" name="filterDateTo" id="filterDateTo"></div>
+        <div class="col-xs-6 col-md-2"><label class="form__label" for="filterGroup">Wybierz grupę:</label>
+            <select name="filterGroup"  class="form__input"  id="filterGroup" onchange="reloadTasks()">
                 <option value="">Nie wybrano</option>
                 <option value="Website">Website</option>
                 <option value="Server">Server</option>
@@ -31,8 +32,8 @@
                 <option value="Other">Other</option>
             </select>
         </div>
-        <div class="col-xs-2"><label for="filterStatus">Status:</label>
-            <select name="filterStatus" id="filterStatus"  onchange="reloadTasks()">
+        <div class="col-xs-6 col-md-2"><label class="form__label" for="filterStatus">Status:</label>
+            <select  class="form__input" name="filterStatus" id="filterStatus"  onchange="reloadTasks()">
                     <option value="">Nie wybrano</option>
                     <option value="0">Sad</option>
                     <option value="1">Done</option>
@@ -40,6 +41,8 @@
                     <option value="3">Kupa</option>
                 </select>
         </div>
+        <div class="col-xs-6 col-md-2 filter__clean"><span>Wyczyść filtrowanie</span></div>
+        
     </div>
 </div>
 <div id="tasksList"> </div>

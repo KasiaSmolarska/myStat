@@ -110,7 +110,7 @@ function accountLogin(postdata) {
  *  pod warunkiem, że ukryte okienko jest wewnątrz
  *  i posiada visibility: hidden oraz opacity: 0 oraz jest elementem DIV
  * 
- *  @param {element} element - dowolny element HTML posiadający klasę
+ *  @param {element} element - dowolny element HTML
  */
 function showElement(element) {
 
@@ -132,3 +132,13 @@ function menuSlide() {
    menu.classList.toggle('aside__slide');
   
 }
+
+function filterSlide(){
+
+    var menu = document.querySelector('.filter__inputs');
+    var icon = document.querySelector('.filter__icon');
+    
+    icon.classList.toggle('filter__icon--clicked');
+    menu.classList.toggle('filter__inputs--slide');
+}
+

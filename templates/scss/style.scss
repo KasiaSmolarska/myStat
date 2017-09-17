@@ -773,16 +773,35 @@ a{
 
 .filter{
 
+    &__inputs{
+        margin-top: 0px;
+        visibility: hidden;
+        height:0px;
+        transition: .2s visibility, .5s height, .4s margin-top;
+
+        &--slide{
+            margin-top: 30px;
+            height: 55px;
+            visibility: visible;
+        }
+    }
+
     &__icon{
         font-size: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: #fff;
+        cursor: pointer;
       
         height: 37px;
         border: 1px solid #ccc;
         border-radius: 5px;
+
+        &--clicked {
+            background: #c23759;
+            color: #fff;
+        }
 
     }
 
