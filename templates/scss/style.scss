@@ -18,8 +18,7 @@ a{
 }
 
 .task{
-    background: #fff;
-    box-shadow:$primaryShadow;
+  
     margin-bottom: 40px;
     border-radius: 5px;
 
@@ -39,6 +38,8 @@ a{
 
     &--tile{
         padding: 10px;
+        background: #fff;
+        box-shadow: $primaryShadow;
     }
 
 
@@ -64,10 +65,17 @@ a{
         }
     }
 
+    &__info{
+        text-align: right;
+    }
+
     &__container{
         width: 100%;
         padding: 20px;
         margin: 15px 0;
+        background: #fff;
+        box-shadow:$primaryShadow;
+        border-radius: 5px;
     }
 
     &__new{
@@ -833,4 +841,8 @@ a{
         font-size: 21px;
         right: 40px;
     }
+}
+
+i.mdi.mdi-filter{
+    margin: 0 6px;
 }

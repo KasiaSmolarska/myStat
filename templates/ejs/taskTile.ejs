@@ -1,4 +1,6 @@
-<div class="task task--tile">
+<div class="task ">
+
+<div class="task--tile">
 
     <div class="task__headers">
         <% for (var key in data) { %>
@@ -8,7 +10,7 @@
         <% } %>
 
     </div>
-    <table class="task__container"  style="border-collapse: collapse;">
+    <table class="task__container"  style="border-collapse: collapse; box-shadow:none;">
     <% for (var key in data) { %>
         <% if (data.hasOwnProperty(key)) { %>
 
@@ -47,4 +49,5 @@
         <% } %>
     <% } %>
     </table>
+</div>
 </div>

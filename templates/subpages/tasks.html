@@ -10,22 +10,22 @@
 </div>
 
 <div class="task__filter filter">
-    <div class="row">
-        <div class="col-xs-8 col-sm-9 col-md-10 col-lg-11 filter__searcher">
+    <div style="display:flex;">
+        <div class=" filter__searcher" style="width:calc(100% - 75px); margin-right:15px;">
             <input class="task__input " type="text" name="searcher" placeholder="Szukaj" title="" id="taskSearcher">
             <span class="filter__magnify"><i onclick="reloadTasks()"  class="mdi mdi-magnify"></i></span>
         </div>
-        <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 " style="text-align:right;">
+        <div class="" style="text-align:right; width:70px;">
             <div class="filter__icon" onclick="filterSlide()"><i class="mdi mdi-filter"></i></div>
         </div>
     </div>
 
     <div id="filterTasks" class="filter__inputs" >
      <div class="row">
-        <div class="col-xs-6 col-md-2"><label for="filterDateFrom" class="form__label">Data od:</label><input class="form__input" onchange="reloadTasks()" type="date" name="filterDateFrom" id="filterDateFrom"></div>
-        <div class="col-xs-6 col-md-2 "><label class="form__label" for="filterDateTo">Data do:</label><input class="form__input" onchange="reloadTasks()" type="date" name="filterDateTo" id="filterDateTo"></div>
+        <div class="col-xs-6 col-md-2"><label for="filterDateFrom" class="form__label">Data od:</label><input class="form__input task__dataFilter" onchange="reloadTasks()" type="date" name="filterDateFrom" id="filterDateFrom"></div>
+        <div class="col-xs-6 col-md-2 "><label class="form__label" for="filterDateTo">Data do:</label><input class="form__input task__dataFilter" onchange="reloadTasks()" type="date" name="filterDateTo" id="filterDateTo"></div>
         <div class="col-xs-6 col-md-2"><label class="form__label" for="filterGroup">Wybierz grupę:</label>
-            <select name="filterGroup"  class="form__input"  id="filterGroup" onchange="reloadTasks()">
+            <select name="filterGroup"  class="form__input task__dataFilter"  id="filterGroup" onchange="reloadTasks()">
                 <option value="">Nie wybrano</option>
                 <option value="Website">Website</option>
                 <option value="Server">Server</option>
@@ -34,7 +34,7 @@
             </select>
         </div>
         <div class="col-xs-6 col-md-2"><label class="form__label" for="filterStatus">Status:</label>
-            <select  class="form__input" name="filterStatus" id="filterStatus"  onchange="reloadTasks()">
+            <select  class="form__input task__dataFilter" name="filterStatus" id="filterStatus"  onchange="reloadTasks()">
                     <option value="">Nie wybrano</option>
                     <option value="0">Do zrobienia</option>
                     <option value="1">Zrobione</option>

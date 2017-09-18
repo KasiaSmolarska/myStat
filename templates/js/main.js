@@ -9,18 +9,38 @@ function reloadTasks() {
     ajax('getTasks', function (tasks) {
         var div = document.getElementById('tasksList');
         var taskTemplate = document.getElementById('taskTemplate').innerText;
-        console.log(tasks);
-        if(tasks.length === 0){
+        var countTask = tasks.length;
+        if(countTask === 0){
             var noResultFound = document.getElementById('noResultFound').innerText;
             div.innerHTML = ejs.render(noResultFound);
             return;
         }
         div.innerHTML = ejs.render(taskTemplate, { 
             data: tasks, 
+            taskLength : countTask,
             sort : {
                 'name' : sort,
                 'dir' : sortDirection
             } });
+
+        var filters = document.querySelectorAll('.task__dataFilter');
+        var selectedFilters= [];
+        
+        for (var i = 0; i < filters.length; i++) {
+            var filtr = filters[i];
+            if(filtr.value !== ''){
+                selectedFilters.push(filtr);
+            }            
+        }
+        var filterIcon = document.querySelector('.filter__icon');
+        filterIcon.innerHTML = '<i class="mdi mdi-filter"></i>';
+        
+        if (selectedFilters.length > 0) {
+            filterIcon.innerHTML += selectedFilters.length;
+        }
+        
+
+
         var sortableHeaders = div.querySelectorAll("[data-sort]");
         for(var i = 0; i < sortableHeaders.length; i++){
             var sortableHeader = sortableHeaders[i];
