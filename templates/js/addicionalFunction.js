@@ -8,7 +8,23 @@ window.addEventListener('load', function () {
     if (dane !== null) {
         showUserData();
     }
-})
+
+    
+
+});
+
+(function menuToggle() {
+    var menu = document.querySelector('aside');
+    window.addEventListener('resize', function () {
+     
+        if (document.body.clientWidth < 1000) {
+            menu.classList.add('aside__slide');
+        } else {
+            menu.classList.remove('aside__slide');
+        }
+    })
+})();
+
 
 /**
  *  Funkcja tworzy nowy element html z modalem na podstawie dwóch szablonów ejsa
@@ -126,18 +142,25 @@ function showElement(element) {
 }
 
 function menuSlide() {
-    
-   var menu = document.querySelector('aside');
-   
-   menu.classList.toggle('aside__slide');
-  
+
+    var menu = document.querySelector('aside');
+
+    menu.classList.toggle('aside__slide');
+
+    if (clientWidth < 1000) {
+        menu.classList.add('aside__slide');
+    }
+    else {
+        menu.classList.remove('aside__slide');
+    }
+
 }
 
-function filterSlide(){
+function filterSlide() {
 
     var menu = document.querySelector('.filter__inputs');
     var icon = document.querySelector('.filter__icon');
-    
+
     icon.classList.toggle('filter__icon--clicked');
     menu.classList.toggle('filter__inputs--slide');
 }
