@@ -9,6 +9,12 @@ function reloadTasks() {
     ajax('getTasks', function (tasks) {
         var div = document.getElementById('tasksList');
         var taskTemplate = document.getElementById('taskTemplate').innerText;
+        console.log(tasks);
+        if(tasks.length === 0){
+            var noResultFound = document.getElementById('noResultFound').innerText;
+            div.innerHTML = ejs.render(noResultFound);
+            return;
+        }
         div.innerHTML = ejs.render(taskTemplate, { 
             data: tasks, 
             sort : {
