@@ -1,3 +1,14 @@
+window.addEventListener('load', function () {
+   
+    var timeline = document.querySelector('.timeline');
+    if (timeline !== null) {
+        showTimeline();
+    }
+
+});
+
+
+
 /**
  *  Funkcja pobiera wszystkie taski i wyświetla je w formie tabsów z tabelką
  *  do poprawnego działania wymaga dowolnego elementu z id 'tasklist' 
@@ -298,4 +309,16 @@ function editUserData(FirstName, SecondName, Sex, City, Job) {
 
     console.log(FirstName, SecondName, Sex, City, Job);
 
+}
+
+
+function showTimeline(){
+     
+     ajax('getTimeline', function(data){
+        var element = document.querySelector('.timeline');
+        var taskTemplate = document.getElementById('timeline').innerText;
+
+        element.innerHTML = ejs.render(taskTemplate, { data: data });
+
+     })
 }

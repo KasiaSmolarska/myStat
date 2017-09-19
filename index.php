@@ -39,5 +39,6 @@ if (count($_GET) == 0 ) {
    }
    include 'engine/database.php';
    include 'controllers/tasks.php';
+   include 'controllers/timeline.php';
    include 'actions/' . $_GET['action'] . '.php';
 }

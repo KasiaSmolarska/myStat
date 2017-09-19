@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#0296dc">
@@ -12,28 +13,32 @@
     <script src="templates/js/message.js"></script>
 
 
-    <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData", "editUserData", "taskTile", "noResultFound"] ?>
+    <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData", "editUserData", "taskTile", "noResultFound", "timeline"] ?>
 
     <?php foreach ($ejsTemplates as $templateName) : ?>
-        <noscript id="<?php echo $templateName ?>">
+    <noscript id="<?php echo $templateName ?>">
         <?php include 'templates/ejs/'.$templateName.'.ejs' ?>
-        </noscript>
+    </noscript>
 
     <?php endforeach ?>
 
 </head>
+
 <body>
     <?php include 'templates/elements/staticElements.html'; ?>
     <div class="layoutPanel">
         <aside class="layoutPanel__aside aside">
-           <a class="aside__item" href="index.php">
+            <a class="aside__item" href="index.php">
                <span class="aside__icon"><i class="mdi mdi-home"></i></span> <span class="aside__name">Strona główna</span>
            </a>
-           <a class="aside__item" href="index.php?page=UserData">
+            <a class="aside__item" href="index.php?page=UserData">
                <span class="aside__icon"><i class="mdi mdi-account"></i></span> <span class="aside__name">Profil użytkownika</span>
            </a>
-           <a class="aside__item" href="index.php?page=tasks">
-               <span class="aside__icon"><i class="mdi mdi-format-list-checks"></i></span> <span class="aside__name">Lista zadań</span>
+            <a class="aside__item" href="index.php?page=tasks">
+           <span class="aside__icon"><i class="mdi mdi-format-list-checks"></i></span> <span class="aside__name">Lista zadań</span>
+       </a>
+            <a class="aside__item" href="index.php?page=timeline">
+               <span class="aside__icon"><i class="mdi mdi-clock"></i></span> <span class="aside__name">Timeline</span>
            </a>
         </aside>
         <div class="layoutPanel__content">
@@ -44,11 +49,12 @@
                         <span class="message__close">
                             <i class="mdi mdi-window-close"></i>
                         </span>
-                        <div class="message__icon"><i style="font-size:22px; "class="mdi mdi-alarm-light"></i></div>
+                        <div class="message__icon"><i style="font-size:22px; " class="mdi mdi-alarm-light"></i></div>
                     </div>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 </body>
+
 </html>
