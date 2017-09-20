@@ -312,12 +312,50 @@ function editUserData(FirstName, SecondName, Sex, City, Job) {
 
 
 function showTimeline(){
-     
+
+  
+ 
      ajax('getTimeline', function(data){
         var element = document.querySelector('.timeline');
         var taskTemplate = document.getElementById('timeline').innerText;
 
         element.innerHTML = ejs.render(taskTemplate, { data: data });
 
+     
+        timelineReverse();
      })
+}
+
+function timelineReverse(){
+
+    var timelineDates = document.querySelectorAll('.timeline__Date');
+
+    var dateArray = [];
+
+    for (var i = 0; i < timelineDates.length; i++) {
+        var dateElem = timelineDates[i].innerHTML;
+        var datadata = dateElem.split(" ");
+        dateArray.push(datadata[0]);
+        
+    }
+
+    var timelineArticle = document.querySelectorAll('.timeline article');
+    
+    for (var j = 1; j < dateArray.length; j++) {
+        var element = dateArray[j];
+
+        if(dateArray[j] !== dateArray[j-1]){
+
+            if (!timelineArticle[j-1].classList.contains("timeline__note--reverse")) {
+                timelineArticle[j].classList.add("timeline__note--reverse");  
+            }
+        } else{
+            if (timelineArticle[j-1].classList.contains("timeline__note--reverse")) {
+                timelineArticle[j].classList.add("timeline__note--reverse");
+            }
+        }
+        
+    }
+
+    
 }

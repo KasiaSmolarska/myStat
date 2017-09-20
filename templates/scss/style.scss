@@ -846,3 +846,46 @@ a{
 i.mdi.mdi-filter{
     margin: 0 6px;
 }
+
+.timeline{
+    width: 100%;
+    margin:20px 0;
+    position: relative;
+
+    &::after {
+        clear: both;
+        content: "";
+        display: block;
+    }
+
+    &__note{
+        width: 45%;
+        @extend .tile__bg;
+
+        &--reverse{
+            float:right;
+        }
+    
+       
+    }
+
+    &__title{
+        @extend .task__tileTitle;
+        font-weight: 500;
+    }
+
+    &__image{
+        position: relative;
+        max-width: 100%;
+        margin:15px 0;
+
+        img{
+            max-width: 100%;
+            height: auto;
+        }
+    }
+}
+
+.clear{
+    clear: both;
+}

@@ -6,5 +6,5 @@ function getTimeline(){
         mkdir('templates/timelineImages');
     }
 
-   return dbQuery("SELECT * FROM timeline");
+   return dbQuery("SELECT * FROM timeline ORDER BY Date DESC");
 }
