@@ -849,8 +849,35 @@ i.mdi.mdi-filter{
 
 .timeline{
     width: 100%;
-    margin:20px 0;
+    margin:30px 0;
     position: relative;
+
+
+    &__header{
+        @extend .task__headers;
+        @extend .task__Header;
+        position: relative;
+        z-index: 11;
+        margin: -30px 0px 0;
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    &--bg{
+        @extend .tile__bg;
+        position: relative;
+
+        &::after{
+            content: '';
+            position: absolute;
+            left: calc(50% - 1px);
+            top: 80px;
+            height: calc(100% - 80px);
+            width: 2px;
+            background: #ededed;
+        }
+    }
 
     &::after {
         clear: both;
@@ -858,20 +885,54 @@ i.mdi.mdi-filter{
         display: block;
     }
 
+
+    &__icon{
+        @extend .message__icon;
+        color: #fff;
+    }
+
+    &__Date{
+        position: absolute;
+        color: #000;
+        left: 45px;
+        width: 200%;
+    }
+
     &__note{
-        width: 45%;
+        width: 47%;
+        float: left;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+        position: relative;
         @extend .tile__bg;
+
+        + .timeline__icon{
+            left: calc(50% - 18px);
+            z-index: 15;
+            top:50px;
+        }
 
         &--reverse{
             float:right;
+
+            + .timeline__icon > .timeline__Date{
+                left:auto!important;
+                right: 45px;
+                text-align: right;
+            }
+
         }
-    
-       
+    }
+
+    &__line{
+        position: relative;
+        width:100%;   
     }
 
     &__title{
         @extend .task__tileTitle;
         font-weight: 500;
+        padding-left: 0px;
+        margin-bottom: 10px;
     }
 
     &__image{

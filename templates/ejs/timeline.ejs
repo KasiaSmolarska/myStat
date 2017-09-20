@@ -1,3 +1,7 @@
+<header class="timeline__header">
+    TIMELINE
+</header>
+
 <div class="row">
     <div class="col-md-12">
         <section>
@@ -5,13 +9,14 @@
             <% for (var key in data) { %>
                 <% if (data.hasOwnProperty(key)) { %>
                     <% var timeNote = data[key] %>
-                    <div class="timeline">
+                    <div class="timeline timeline__line">
                         <article class="timeline__note">
                             <div class="timeline__title"><%= timeNote['Title']  %></div>
                             <div><%= timeNote.Description %></div>
-                            <div class="timeline__Date"><%= timeNote['Date'] %></div>
                             <div class="timeline__image"><img src="templates/timelineImages/<%= timeNote.Image %>" alt=""></div>
                         </article>
+                        <div class="timeline__icon"><i class="mdi mdi-clock"></i>                            <div class="timeline__Date"><%= timeNote['Date'] %></div>
+                    </div>
                     </div>
                 <% } %>
             <% } %>

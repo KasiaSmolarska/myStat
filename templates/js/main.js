@@ -321,6 +321,19 @@ function showTimeline(){
 
         element.innerHTML = ejs.render(taskTemplate, { data: data });
 
+        var iconDiv = document.querySelectorAll('.timeline__icon');
+   
+        
+        for (var i = 0; i < iconDiv.length; i++) {
+            var ico = iconDiv[i];
+
+            var color = message.color() + "," + message.color() + "," + message.color();
+            var background = 'rgb(' + color + ')';
+            var boxShadow = '0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(' + color + ', 0.4)';
+
+            iconDiv[i].style.background = background;
+            iconDiv[i].style.boxShadow = boxShadow;
+        }
      
         timelineReverse();
      })
