@@ -137,7 +137,6 @@ function showUserData() {
                     }
                 }
             });
-            console.log(data);
         })
     });
 
@@ -285,7 +284,7 @@ function editUserData(FirstName, SecondName, Sex, City, Job) {
 
     var elem = document.createElement('div');
     elem.innerHTML = ejs.render(modalTemplate, {
-        title: "Czy na pewno chcesz swoje dane?",
+        title: "Chcesz zmienić swoje dane?",
         content: content
     });
     var modal = elem.querySelector('.modal');
