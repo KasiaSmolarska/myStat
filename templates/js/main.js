@@ -1,5 +1,5 @@
 window.addEventListener('load', function () {
-   
+
     var timeline = document.querySelector('.timeline');
     if (timeline !== null) {
         showTimeline();
@@ -21,65 +21,66 @@ function reloadTasks() {
         var div = document.getElementById('tasksList');
         var taskTemplate = document.getElementById('taskTemplate').innerText;
         var countTask = tasks.length;
-        if(countTask === 0){
+        if (countTask === 0) {
             var noResultFound = document.getElementById('noResultFound').innerText;
             div.innerHTML = ejs.render(noResultFound);
             return;
         }
-        div.innerHTML = ejs.render(taskTemplate, { 
-            data: tasks, 
-            taskLength : countTask,
-            sort : {
-                'name' : sort,
-                'dir' : sortDirection
-            } });
+        div.innerHTML = ejs.render(taskTemplate, {
+            data: tasks,
+            taskLength: countTask,
+            sort: {
+                'name': sort,
+                'dir': sortDirection
+            }
+        });
 
         var filters = document.querySelectorAll('.task__dataFilter');
-        var selectedFilters= [];
-        
+        var selectedFilters = [];
+
         for (var i = 0; i < filters.length; i++) {
             var filtr = filters[i];
-            if(filtr.value !== ''){
+            if (filtr.value !== '') {
                 selectedFilters.push(filtr);
-            }            
+            }
         }
         var filterIcon = document.querySelector('.filter__icon');
         filterIcon.innerHTML = '<i class="mdi mdi-filter"></i>';
-        
+
         if (selectedFilters.length > 0) {
             filterIcon.innerHTML += selectedFilters.length;
         }
-        
+
 
 
         var sortableHeaders = div.querySelectorAll("[data-sort]");
-        for(var i = 0; i < sortableHeaders.length; i++){
+        for (var i = 0; i < sortableHeaders.length; i++) {
             var sortableHeader = sortableHeaders[i];
 
             sortableHeader.addEventListener('click', function () {
-             
-                if( sort === this.dataset.sort){
+
+                if (sort === this.dataset.sort) {
                     if (sortDirection === 'ASC') {
-                       
+
                         localStorage.setItem('sortDir', 'DESC');
-                    } else{
-                       
+                    } else {
+
                         localStorage.setItem('sortDir', 'ASC');
                     }
-                } else{
-                     
+                } else {
+
                     localStorage.setItem('sortDir', 'ASC');
                 }
 
                 localStorage.setItem('sortBy', this.dataset.sort);
-               
+
                 reloadTasks();
 
 
             })
 
         }
-       // createTabTask(div);
+        // createTabTask(div);
     }, "sort=" + sort + "&sortDir=" + sortDirection + "&" + convertFormToPostData(document.getElementById('filterTasks')) + "&searcher=" + document.getElementById('taskSearcher').value);
 }
 
@@ -210,7 +211,7 @@ function submitAddTask(form) {
 function showNewTask() {
 
     openModal('addNewTask', function (status, modal) {
-        if(status !== "ok"){
+        if (status !== "ok") {
             message.show("zadanie nie zostało dodane!", "warning");
             return;
         }
@@ -253,7 +254,7 @@ function editTask(id, title, status, groups) {
     document.body.appendChild(modal);
 
     modalOperationsOnClick(modal, function (data) {
-          if(data !== "ok"){
+        if (data !== "ok") {
             message.show('Nie zmieniłeś treści zadania!', "warning");
             return;
         }
@@ -291,7 +292,7 @@ function editUserData(FirstName, SecondName, Sex, City, Job) {
     document.body.appendChild(modal);
 
     modalOperationsOnClick(modal, function (data) {
-        if(data !== "ok"){
+        if (data !== "ok") {
             message.show('Nie zmieniłeś swoich danych!', "warning");
             return;
         }
@@ -299,11 +300,11 @@ function editUserData(FirstName, SecondName, Sex, City, Job) {
         var postData = convertFormToPostData(modal);
         ajax('editUserData', function (ajaxData) {
 
-                if (ajaxData['status'] === 'ok') {
-                    message.show("Twoje dane zostały zmienione");
-                    showUserData();
-                }
-            }, postData)
+            if (ajaxData['status'] === 'ok') {
+                message.show("Twoje dane zostały zmienione");
+                showUserData();
+            }
+        }, postData)
     });
 
     console.log(FirstName, SecondName, Sex, City, Job);
@@ -311,19 +312,19 @@ function editUserData(FirstName, SecondName, Sex, City, Job) {
 }
 
 
-function showTimeline(){
+function showTimeline() {
 
-  
- 
-     ajax('getTimeline', function(data){
+    ajax('getTimeline', function (data) {
         var element = document.querySelector('.timeline');
         var taskTemplate = document.getElementById('timeline').innerText;
 
         element.innerHTML = ejs.render(taskTemplate, { data: data });
 
+
+
         var iconDiv = document.querySelectorAll('.timeline__icon');
-   
-        
+
+
         for (var i = 0; i < iconDiv.length; i++) {
             var ico = iconDiv[i];
 
@@ -334,12 +335,12 @@ function showTimeline(){
             iconDiv[i].style.background = background;
             iconDiv[i].style.boxShadow = boxShadow;
         }
-     
+
         timelineReverse();
-     })
+    })
 }
 
-function timelineReverse(){
+function timelineReverse() {
 
     var timelineDates = document.querySelectorAll('.timeline__Date');
 
@@ -349,26 +350,30 @@ function timelineReverse(){
         var dateElem = timelineDates[i].innerHTML;
         var datadata = dateElem.split(" ");
         dateArray.push(datadata[0]);
-        
+
     }
 
     var timelineArticle = document.querySelectorAll('.timeline article');
-    
+
     for (var j = 1; j < dateArray.length; j++) {
         var element = dateArray[j];
 
-        if(dateArray[j] !== dateArray[j-1]){
+        if (dateArray[j] !== dateArray[j - 1]) {
 
-            if (!timelineArticle[j-1].classList.contains("timeline__note--reverse")) {
-                timelineArticle[j].classList.add("timeline__note--reverse");  
+            if (!timelineArticle[j - 1].classList.contains("timeline__note--reverse")) {
+                timelineArticle[j].classList.add("timeline__note--reverse");
             }
-        } else{
-            if (timelineArticle[j-1].classList.contains("timeline__note--reverse")) {
+        } else {
+            if (timelineArticle[j - 1].classList.contains("timeline__note--reverse")) {
                 timelineArticle[j].classList.add("timeline__note--reverse");
             }
         }
-        
     }
+}
 
-    
+
+function imageResize(img) {
+
+    var url = img.src;
+    window.open(url,'Image','width=1000,height=600,resizable=0, menubar=0, titlebar=0');
 }
