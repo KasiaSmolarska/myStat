@@ -27,6 +27,8 @@ function showTileAddTask() {
     var addNewTask = document.getElementById('addNewTask').innerText;
     div.innerHTML = ejs.render(addNewTask, {});
 
+    setActiveTaskGroup(div);
+
     document.getElementById('submitDataCallback').addEventListener('click', function () {
         ajax('addTask', function (data) {
             if (data['Status'] !== 'OK') {
@@ -35,15 +37,19 @@ function showTileAddTask() {
             }
 
             message.show(data['Description']);
-            var inputs = div.querySelectorAll('input[name]');
-
-            for (var i = 0; i < inputs.length; i++) {
-                var input = inputs[i];
-                input.value = '';
-            }
+            var input = div.querySelector('input[name="title"]');
+            input.value = '';
 
             reloadTasks();
         }, convertFormToPostData(div))
     })
 
+}
+
+function setActiveTaskGroup(element) {
+
+    var group = element.querySelector('select[name="group"]');
+    var activeGroup = localStorage.getItem("activeGroup");
+
+    group.value = activeGroup;
 }

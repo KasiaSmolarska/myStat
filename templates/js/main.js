@@ -156,10 +156,12 @@ function createTabTask(element) {
 
     showGroup(activeGroup || tabsButton[0].dataset.group);
 
+
     for (var i = 0; i < tabsButton.length; i++) {
         tabsButton[i].addEventListener("click", function () {
             var groupName = this.dataset.group;
             showGroup(groupName);
+            setActiveTaskGroup(document);
         });
     }
 
@@ -320,8 +322,6 @@ function showTimeline() {
 
         element.innerHTML = ejs.render(taskTemplate, { data: data });
 
-
-
         var iconDiv = document.querySelectorAll('.timeline__icon');
 
 
@@ -375,5 +375,5 @@ function timelineReverse() {
 function imageResize(img) {
 
     var url = img.src;
-    window.open(url,'Image','width=1000,height=600,resizable=0, menubar=0, titlebar=0');
+    window.open(url,'Image','width=1000,height=518,resizable=0, menubar=0, titlebar=0');
 }

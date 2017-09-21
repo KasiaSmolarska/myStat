@@ -147,13 +147,6 @@ function menuSlide() {
 
     menu.classList.toggle('aside__slide');
 
-    if (clientWidth < 1000) {
-        menu.classList.add('aside__slide');
-    }
-    else {
-        menu.classList.remove('aside__slide');
-    }
-
 }
 
 function filterSlide() {

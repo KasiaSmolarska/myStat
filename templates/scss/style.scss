@@ -867,6 +867,7 @@ i.mdi.mdi-filter{
     &--bg{
         @extend .tile__bg;
         position: relative;
+        padding: 25px;
 
         &::after{
             content: '';
