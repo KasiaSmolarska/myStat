@@ -15,7 +15,8 @@ function accountRegister($email,$password){
     } catch(Exception $e){
         return ['Status' => 'Error', 'Description' => 'Nie udało się stworzyć konta, być może masz już konto założone na ten adres email'];
     }
-   
+    
+    
     return ['Status' => 'OK', 'Description' => 'Brawo. Zostałeś zarejestrowany!'];
 }
 
@@ -52,6 +53,10 @@ function getUserData(){
 function editUserData($FirstName, $SecondName, $Sex, $City, $Job){
     $userId = getLoginId();
 
+
+
+    createAvatarWithLetter($FirstName[0], $userId);
+
     return dbQuery("UPDATE `users` SET `FirstName`= '$FirstName',`SecondName`= '$SecondName',`Sex`= $Sex,`City`= '$City',`Job`= '$Job' WHERE `ID`=$userId");
 }
 
@@ -77,3 +82,24 @@ function setAvatarPhoto($base64){
     return dbQuery("UPDATE `users` SET Avatar = '$path' WHERE `ID`=$userId" );
 }
 
+function createAvatarWithLetter($letter, $ID){
+    $imageWithLetter = imagecreate(250,250);
+
+    $background = imagecolorallocate($imageWithLetter, rand ( 0 , 210 ),rand ( 0 , 210 ),rand ( 0 , 210 ));
+    $letterColor = imagecolorallocate($imageWithLetter, 255,255,255);
+
+    imagefilledrectangle($imageWithLetter,0,0,250,250, $background);
+
+    $fontSize = 70;
+    $fontPath = 'templates/tmp/Roboto-Bold.ttf';
+
+    $sizeBox = imagettfbbox ( $fontSize , 0 , $fontPath , $letter );
+
+    $width = $sizeBox[2];
+    $height = $sizeBox[5];
+
+
+    imagefttext ( $imageWithLetter , $fontSize , 0 , 125 - ($width/2) , 125 - ($height / 2), $letterColor , $fontPath , $letter );
+
+    imagepng($imageWithLetter,'templates/avatars/letter'. $ID.'.png');
+}
