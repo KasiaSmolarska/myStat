@@ -1,7 +1,9 @@
 <?php
 
+$connect = mysqli_connect("localhost", "root", "", "my_stats");
+
 function dbQuery($query){
-    $connect = mysqli_connect("localhost", "root", "", "my_stats");
+global $connect;
     mysqli_query($connect, "SET NAMES utf8");
     $result = mysqli_query($connect, $query);
 
@@ -19,4 +21,8 @@ function dbQuery($query){
         $mapper[] = $row;
     }
     return $mapper;
+}
+
+function getLastID(){
+    return mysqli_insert_id ( $connect );
 }

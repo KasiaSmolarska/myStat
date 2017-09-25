@@ -9,9 +9,12 @@ function accountRegister($email,$password){
         $email = trim( $email );
         $email = strtolower( $email ); 
         $hashEmail = md5( $email );
-        $emailLink = "https://www.gravatar.com/avatar/$hashEmail?s=250";
-         dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `Sex`, `City`, `Job`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','0','','','$emailLink',NOW())");
-
+        dbQuery("INSERT INTO `users`(`ID`, `Email`, `Password`, `FirstName`, `SecondName`, `Sex`, `City`, `Job`, `Avatar`, `RegisterDate`) VALUES (null, '$email', '$hashPassword', '','','0','','','',NOW())");
+        
+        $userLastID = getLastID();
+        $emailLink = "https://www.gravatar.com/avatar/$hashEmail?d=".urlencode('http://localhost/majap/templates/avatars/letter'. $userLastID . '.png')."&s=250";
+        dbQuery("UPDATE `users` SET `Avatar` = '$emailLink' WHERE `ID` = $userLastID ");
+        
     } catch(Exception $e){
         return ['Status' => 'Error', 'Description' => 'Nie udało się stworzyć konta, być może masz już konto założone na ten adres email'];
     }
