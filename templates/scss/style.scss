@@ -558,8 +558,8 @@ a{
             margin-right: 10px!important;
 
             img{
-                width:30px;
-                height: auto;
+                width:auto;
+                height: 100%;
             }
         }
     }
@@ -605,7 +605,8 @@ a{
             overflow: hidden;
 
             img{
-                max-width: 250px;
+                height: 100%;
+                width: auto;
             }
         }
 

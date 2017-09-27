@@ -1,7 +1,7 @@
+
 <header class="timeline__header">
     TIMELINE
 </header>
-
 <div class="row">
     <div class="col-md-12">
         <section>
@@ -15,7 +15,8 @@
                             <div><%= timeNote.Description %></div>
                             <div class="timeline__image"><img onclick="imageResize(this)" src="templates/timelineImages/<%= timeNote.Image %>" alt=""></div>
                         </article>
-                        <div class="timeline__icon"><i class="mdi mdi-clock"></i>                            <div class="timeline__Date"><%= timeNote['Date'] %></div>
+                        <div class="timeline__icon"><i class="mdi mdi-clock"></i>                            
+                        <div class="timeline__Date"><%= timeNote['Date'] %></div>
                     </div>
                     </div>
                 <% } %>

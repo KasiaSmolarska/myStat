@@ -221,6 +221,16 @@ function showNewTask() {
     }, 'Dodaj nowe zadanie!');
 }
 
+function addNewTimelineNote() {
+    openModal('addNewTimelineNote',function (status, modal) {
+        if (status !== "ok") {
+            message.show("nie udało się dodać notki!", "warning");
+            return;
+        }
+        //funkcja(modal);
+    }, 'Dodaj nową notkę Timeline!');
+}
+
 
 
 function removeTask(id, title) {
