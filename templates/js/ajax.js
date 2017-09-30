@@ -46,8 +46,7 @@ function convertFormToPostData(form){
        }
       
    }
-console.log(addtaskValues);
-
+   
    return addtaskValues.join('&');
 }
 

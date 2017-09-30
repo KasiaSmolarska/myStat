@@ -2,15 +2,15 @@
 
 function getTimeline(){
 
-    if(file_exists('templates/timelineImages') === false){
-        mkdir('templates/timelineImages');
-    }
-
    return dbQuery("SELECT * FROM timeline ORDER BY Date DESC");
 }
 
 
 function addNewTimelineNote($title,$description,$date){
+
+    if(file_exists('templates/timelineImages') === false){
+        mkdir('templates/timelineImages');
+    }
     
     $userID = getLoginId();
     if ($userID === -1) {
