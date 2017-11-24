@@ -38,7 +38,10 @@
            <span class="aside__icon"><i class="mdi mdi-format-list-checks"></i></span> <span class="aside__name">Lista zadań</span>
        </a>
             <a class="aside__item" href="index.php?page=timeline">
-               <span class="aside__icon"><i class="mdi mdi-clock"></i></span> <span class="aside__name">Timeline</span>
+               <span class="aside__icon"><i class="mdi mdi-calendar"></i></span> <span class="aside__name">Timeline</span>
+           </a>
+           <a class="aside__item" href="index.php?page=overtime">
+               <span class="aside__icon"><i class="mdi mdi-clock"></i></span> <span class="aside__name">Nadgodziny</span>
            </a>
         </aside>
         <div class="layoutPanel__content">

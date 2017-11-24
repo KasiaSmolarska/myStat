@@ -50,6 +50,20 @@ function convertFormToPostData(form){
    return addtaskValues.join('&');
 }
 
+
+function convertObjectToPostData(object){
+    var postValues = [];
+    for (var key in object) {
+        if (object.hasOwnProperty(key)) {
+            var value = object[key];
+            
+            postValues.push(key + "=" + value );
+        }
+    }
+
+    return postValues.join('&');
+}
+
 /**
  * Funkcja uruchamia się po zmianie stanu inputa[file] w celu stworzenia base64 - obrazka.
  * 

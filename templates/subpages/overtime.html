@@ -1,0 +1,35 @@
+<script src="templates/js/main.js"></script>
+<script src="templates/js/addicionalFunction.js"></script>
+<script src="templates/js/overtime.js"></script>
+
+<div class="overtime__newContainer tile tile__bg">
+    <div class="task__icon"><i style="font-size:22px; " class="mdi mdi-plus"></i></div>
+    <div class="task__tileTitle">Dodaj nową notkę do timeline!</div>
+    
+    <form onsubmit="addOvertime(); return false;">
+        <fieldset>
+            <legend>Tu jest legenda</legend>
+            <label for="description">Opis</label>
+            <textarea id="description" required rows="2"></textarea>
+            <label for="client">Klient:</label>
+            <input type="text" id="client">
+            <label for="day">Dzień:</label>
+            <input required class="form__input " type="date" id="day">
+            <label for="Godzina od:"></label>
+            <input required type="number" min="0" max="23" step="1" id="hourFrom">
+            <input required type="number" min="0" max="59" step="1" id="minutesFrom">
+            <label for="Godzina do:"></label>
+            <input required type="number" min="0" max="23" step="1" id="hourTo">
+            <input required type="number" min="0" max="59" step="1" id="minutesTo">
+            <label for="overtimeCount">Ilość nadgodzin:</label>
+            <input type="text" readonly value="10:30">
+
+            <input type="submit" value="+">
+
+        </fieldset>
+    </form>
+</div>
+
+<div class="overtime">
+    GODZINSZE
+</div>
