@@ -415,6 +415,10 @@ a{
             border-bottom: 1px solid $primaryColor;
             box-shadow: inset 0 -1px 0 $primaryColor;
         }
+
+        &--overtime{
+            font-size:12px;
+        }
     }
 }
 

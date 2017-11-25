@@ -11,35 +11,35 @@
     <form onsubmit="addOvertime(); return false;" style="padding-top:10px;">
 
         <div style="display: flex;">
-            <label class="horizontalLabel"for="description">Opis
-            <textarea class="form__input " id="description" required rows="2"></textarea>
+            <label class="horizontalLabel"for="description">Wykonano:
+            <textarea class="form__input form__input--overtime " placeholder="Opis pracy.." id="description" required rows="2"></textarea>
             </label>
             <label class="horizontalLabel"for="client">Klient:
                 
-            <input class="form__input " type="text" id="client">
+            <input class="form__input form__input--overtime " type="text" id="client">
             </label>
             <label class="horizontalLabel"for="day">Dzień:
-                    <input required class="form__input" type="date" id="day"></label>
+                    <input required class="form__input form__input--overtime" type="date" id="day"></label>
             <label class="horizontalLabel">
                 <span>Godzina od:</span>
                 <div class="timeField">
 
 
-                        <input required class="form__input timeField__input" type="number" min="0" max="23" step="1" id="hourFrom" placeholder="hh"> : 
-                        <input required class="form__input timeField__input" type="number" min="0" max="59" step="1" id="minutesFrom" placeholder="mm">
+                        <input required class="form__input form__input--overtime timeField__input" type="number" min="0" max="23" step="1" id="hourFrom" placeholder="hh"> : 
+                        <input required class="form__input form__input--overtime timeField__input" type="number" min="0" max="59" step="1" id="minutesFrom" placeholder="mm">
                 </div>
             </label>
             <label class="horizontalLabel">
                 <span>Godzina do:</span>
                 <div class="timeField">
-                <input required class="form__input timeField__input" type="number" min="0" max="23" step="1" id="hourTo" placeholder="hh"> : 
-                <input required class="form__input timeField__input" type="number" min="0" max="59" step="1" id="minutesTo" placeholder="mm">
+                <input required class="form__input form__input--overtime timeField__input" type="number" min="0" max="23" step="1" id="hourTo" placeholder="hh"> : 
+                <input required class="form__input form__input--overtime timeField__input" type="number" min="0" max="59" step="1" id="minutesTo" placeholder="mm">
             </div>
             </label>
 
             <label class="horizontalLabel"for="overtimeCount">Ilość nadgodzin:
 
-                    <big><big>10:30</big></big>
+                    <big><big id="overtimeCount">00:00</big></big>
             </label>
 
             <input class="overtime__submit" type="submit" value="+">
