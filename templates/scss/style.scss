@@ -438,6 +438,12 @@ a{
         justify-content: center;
         margin-bottom: -42px;
         margin-left: -10px;
+        transition: all .4s;
+
+        &:hover{
+            color:#2a2a2a;
+            box-shadow: none;
+        }
     }
 }
 
@@ -982,4 +988,30 @@ i.mdi.mdi-filter{
 
 .clear{
     clear: both;
+}
+
+.timeField{
+    display:flex;
+    &__input{
+        display:inline-block;
+    }
+}
+.horizontalLabel{
+    padding: 0 8px;
+}
+
+
+
+.overtime{
+
+    &__submit {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        border: none;
+        background: #49d0b1;
+        color: #fff;
+        font-size: 28px;
+        cursor: pointer;
+    }
 }

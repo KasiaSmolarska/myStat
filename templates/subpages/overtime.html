@@ -3,30 +3,48 @@
 <script src="templates/js/overtime.js"></script>
 
 <div class="overtime__newContainer tile tile__bg">
-    <div class="task__icon"><i style="font-size:22px; " class="mdi mdi-plus"></i></div>
-    <div class="task__tileTitle">Dodaj nową notkę do timeline!</div>
+    <div class="task__icon"><i style="font-size:22px; " class="mdi mdi-clock"></i></div>
+    <div class="task__tileTitle">Dodaj nową informację o nadgodzinach!</div>
+</div>
+<div class="overtime__newContainer tile tile__bg">
     
-    <form onsubmit="addOvertime(); return false;">
-        <fieldset>
-            <legend>Tu jest legenda</legend>
-            <label for="description">Opis</label>
-            <textarea id="description" required rows="2"></textarea>
-            <label for="client">Klient:</label>
-            <input type="text" id="client">
-            <label for="day">Dzień:</label>
-            <input required class="form__input " type="date" id="day">
-            <label for="Godzina od:"></label>
-            <input required type="number" min="0" max="23" step="1" id="hourFrom">
-            <input required type="number" min="0" max="59" step="1" id="minutesFrom">
-            <label for="Godzina do:"></label>
-            <input required type="number" min="0" max="23" step="1" id="hourTo">
-            <input required type="number" min="0" max="59" step="1" id="minutesTo">
-            <label for="overtimeCount">Ilość nadgodzin:</label>
-            <input type="text" readonly value="10:30">
+    <form onsubmit="addOvertime(); return false;" style="padding-top:10px;">
 
-            <input type="submit" value="+">
+        <div style="display: flex;">
+            <label class="horizontalLabel"for="description">Opis
+            <textarea class="form__input " id="description" required rows="2"></textarea>
+            </label>
+            <label class="horizontalLabel"for="client">Klient:
+                
+            <input class="form__input " type="text" id="client">
+            </label>
+            <label class="horizontalLabel"for="day">Dzień:
+                    <input required class="form__input" type="date" id="day"></label>
+            <label class="horizontalLabel">
+                <span>Godzina od:</span>
+                <div class="timeField">
 
-        </fieldset>
+
+                        <input required class="form__input timeField__input" type="number" min="0" max="23" step="1" id="hourFrom" placeholder="hh"> : 
+                        <input required class="form__input timeField__input" type="number" min="0" max="59" step="1" id="minutesFrom" placeholder="mm">
+                </div>
+            </label>
+            <label class="horizontalLabel">
+                <span>Godzina do:</span>
+                <div class="timeField">
+                <input required class="form__input timeField__input" type="number" min="0" max="23" step="1" id="hourTo" placeholder="hh"> : 
+                <input required class="form__input timeField__input" type="number" min="0" max="59" step="1" id="minutesTo" placeholder="mm">
+            </div>
+            </label>
+
+            <label class="horizontalLabel"for="overtimeCount">Ilość nadgodzin:
+
+                    <big><big>10:30</big></big>
+            </label>
+
+            <input class="overtime__submit" type="submit" value="+">
+        </div>
+
     </form>
 </div>
 
