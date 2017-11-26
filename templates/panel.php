@@ -13,7 +13,7 @@
     <script src="templates/js/message.js"></script>
 
 
-    <?php $ejsTemplates = ["taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData", "editUserData", "taskTile", "noResultFound", "timeline", "addNewTimelineNote"] ?>
+    <?php $ejsTemplates = ["overtimeTable", "taskTemplate", "modalTemplate", "modalConfirm", "modalAlert", "addNewTask", "editTaskTemplate", "userData", "editUserData", "taskTile", "noResultFound", "timeline", "addNewTimelineNote"] ?>
 
     <?php foreach ($ejsTemplates as $templateName) : ?>
     <noscript id="<?php echo $templateName ?>">

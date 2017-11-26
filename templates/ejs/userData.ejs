@@ -1,3 +1,11 @@
+<%
+var sexNames = [
+    'Nie wybrano',
+    'Mężczyzna',
+    'Kobieta'
+]
+%>
+
 <% for (var key in data) { %>
     <% if (data.hasOwnProperty(key)) { %>
         <% var grupa = data[key]; %>
@@ -22,7 +30,7 @@
                 
                 <div class="form__row">
                     <label class="form__label">Płeć: </label>
-                    <span><%=  grupa.Sex === 1 ? "Mężczyzna" : "Kobieta" %></span>
+                    <span><%= sexNames[grupa.Sex] %></span>
                 </div>
                 <div class="form__row">
                     <label class="form__label">Email: </label>

@@ -1,0 +1,35 @@
+
+<table style="width:100%">
+    <tr>
+        <th>Opis</th>
+        <th>Klient</th>
+        <th>Dzień</th>
+        <th>od</th>
+        <th>do</th>
+        <th>suma</th>
+    </tr>
+
+<% for(var i = 0; i < data.length; i++) { %>
+    <% var overtime = data[i] %>
+    <tr>
+        <td><%= overtime.Description %></td>
+        <td><%= overtime.Client %></td>
+        <td><%= overtime.Day %></td>
+        <td><%= overtime.Time_from %></td>
+        <td><%= overtime.Time_to %></td>
+        <td><%= countSummaryTime(
+            convertMySQLTimeToMinutes(overtime.Time_from),
+            convertMySQLTimeToMinutes(overtime.Time_to),
+            overtime.Weekend) %></td>
+    </tr>
+<% } %>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= suma %></td>
+    </tr>
+</table>
