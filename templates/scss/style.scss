@@ -115,7 +115,7 @@ a{
                 }
         }
 
-        & td:not(:last-child){
+        & td{
             border-bottom: 1px solid #f1f1f1;
         }
 
@@ -1014,7 +1014,7 @@ i.mdi.mdi-filter{
         width: 50px;
         height: 50px;
         border: none;
-        background: #49d0b1;
+        background: #40C22F;
         color: #fff;
         font-size: 28px;
         cursor: pointer;

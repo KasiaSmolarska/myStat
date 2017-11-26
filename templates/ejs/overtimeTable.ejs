@@ -1,17 +1,23 @@
 
-<table style="width:100%">
-    <tr>
-        <th>Opis</th>
-        <th>Klient</th>
-        <th>Dzień</th>
-        <th>od</th>
-        <th>do</th>
-        <th>suma</th>
+<div class="task__headers " style="margin:0px 15px -40px; position:relative; font-size:18px;"><span>Sumaryczna ilość nadgodzin w listopadzie:</span>
+<span style="font-weight: 500;font-size: 20px;"><%= suma %></span></div>
+
+
+
+
+<table style="width:100%; padding-top:40px;" class="task__container">
+    <tr class="task__head">
+        <td>Opis</td>
+        <td>Klient</td>
+        <td>Dzień</td>
+        <td>od</td>
+        <td>do</td>
+        <td>suma</td>
     </tr>
 
 <% for(var i = 0; i < data.length; i++) { %>
     <% var overtime = data[i] %>
-    <tr>
+    <tr class="task__element">
         <td><%= overtime.Description %></td>
         <td><%= overtime.Client %></td>
         <td><%= overtime.Day %></td>
@@ -23,13 +29,5 @@
             overtime.Weekend) %></td>
     </tr>
 <% } %>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><%= suma %></td>
-    </tr>
+   
 </table>

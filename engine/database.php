@@ -3,7 +3,7 @@
 $connect = mysqli_connect("localhost", "root", "", "my_stats");
 
 function dbQuery($query){
-global $connect;
+    global $connect;
     mysqli_query($connect, "SET NAMES utf8");
     $result = mysqli_query($connect, $query);
 
@@ -24,5 +24,6 @@ global $connect;
 }
 
 function getLastID(){
+    global $connect;
     return mysqli_insert_id ( $connect );
 }
