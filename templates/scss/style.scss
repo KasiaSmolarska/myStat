@@ -998,6 +998,7 @@ i.mdi.mdi-filter{
     display:flex;
     &__input{
         display:inline-block;
+        max-width:70px;
     }
 }
 .horizontalLabel{
