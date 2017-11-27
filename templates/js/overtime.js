@@ -12,8 +12,8 @@ function onChangeHandler() {
 }
 
 function countSummaryTime(startTime, stopTime, isWeekend){
-    var calcHours = ((stopTime - startTime) / 60).toFixed(0);
-    if (isWeekend === 0) {
+    var calcHours = Math.floor((stopTime - startTime) / 60);
+    if (isWeekend == 0) {
         calcHours -= 8;
     }
     calcHours = addZero(calcHours);
@@ -23,14 +23,14 @@ function countSummaryTime(startTime, stopTime, isWeekend){
 }
 
 function converMinutesToTime(minutes){
-    var calcHours = (minutes / 60).toFixed(0);
+    var calcHours = Math.floor(minutes / 60);
     var calcMinutes = parseInt(minutes % 60);
-    return addZero(calcHours) + ':' + addZero(calcMinutes);
+    
+    return addZero(calcHours) + 'h : ' + addZero(calcMinutes) + 'min';
 }
 
 function convertMySQLTimeToMinutes(time){
     var arr = time.split(':');
-
 
     return arr[0] * 60 + parseInt(arr[1]);
 
@@ -45,10 +45,10 @@ window.addEventListener("load", function () {
             var input = overtimeInputs[i];
             input.value = '00';
 
-            input.addEventListener("change", onChangeHandler)
+            input.addEventListener("input", onChangeHandler)
         }
 
-        document.getElementById('day').addEventListener("change", onChangeHandler)
+        document.getElementById('day').addEventListener("input", onChangeHandler)
 
     }
 })
@@ -111,11 +111,10 @@ function getOvertime() {
                     
         }
 
-
         var container = document.getElementById('tableOvertime');
         container.innerHTML = ejs.render(overtimeTemplate, { 
             data : result,
-            suma : converMinutesToTime(minutes)
+            suma: converMinutesToTime(minutes)
         });
 
     }, convertObjectToPostData({
