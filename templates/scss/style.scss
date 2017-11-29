@@ -314,6 +314,10 @@ a{
     &--succes{
         background: #40C22F;
         padding: 10px 55px;
+
+        &:hover{
+         background: #b2c22f;
+        }
     }
 
     &--failure{
@@ -551,6 +555,7 @@ a{
             > div{
                 margin: 0 5px;
             }
+
         }
 
         i{
@@ -1018,5 +1023,16 @@ i.mdi.mdi-filter{
         color: #fff;
         font-size: 28px;
         cursor: pointer;
+    }
+}
+
+.account{
+    
+    label{
+        color:#fff!important;
+    }
+
+    a{
+        color: #2fc2a1;
     }
 }
